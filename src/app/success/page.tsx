@@ -2,11 +2,17 @@
 
 import popperAnimation from "@/../public/popper-animation1.json";
 import checkCircleAnimation from "@/../public/success-animation.json";
-import LottieAnimation from "@/components/ui/LottieAnimation";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+const LottieAnimation = dynamic(
+  () => import("@/components/ui/LottieAnimation"),
+  {
+    ssr: false,
+  }
+);
 export default function SuccessPage() {
   const router = useRouter();
   const [dimensions, setDimensions] = useState<{
