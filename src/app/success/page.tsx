@@ -1,10 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import LottieAnimation from "@/components/ui/LottieAnimation";
 import popperAnimation from "@/../public/popper-animation1.json";
 import checkCircleAnimation from "@/../public/success-animation.json";
+import LottieAnimation from "@/components/ui/LottieAnimation";
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function SuccessPage() {
