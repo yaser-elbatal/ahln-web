@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 "use client";
 
 import BouncingText from "@/components/bouncing-text";
@@ -16,6 +18,7 @@ import {
   Video,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 
 export default function Home() {
@@ -23,7 +26,6 @@ export default function Home() {
   const appRef = useRef<HTMLDivElement>(null);
   const secureRef = useRef<HTMLDivElement>(null);
   const processRef = useRef<HTMLDivElement>(null);
-  const featureRef = useRef<HTMLDivElement>(null);
 
   // Scroll progress for parallax effects
   const { scrollYProgress } = useScroll();
@@ -109,7 +111,13 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 4.5 }}
           >
             <Button className="bg-cyan-400 hover:bg-cyan-500 text-cyan-950 font-medium px-8 py-6 text-lg rounded-full">
-              <a href="/products">Discover Ahln</a>
+              <Link
+                href={{
+                  pathname: `/products`,
+                }}
+              >
+                Discover Ahln
+              </Link>
             </Button>
           </motion.div>
         </div>

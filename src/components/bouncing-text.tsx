@@ -1,26 +1,32 @@
-"use client"
+/* eslint-disable react/no-unescaped-entities */
 
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+"use client";
+
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 interface BouncingTextProps {
-  text: string
-  className?: string
-  delay?: number
+  text: string;
+  className?: string;
+  delay?: number;
 }
 
-export default function BouncingText({ text, className, delay = 0 }: BouncingTextProps) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: false, amount: 0.5 })
-  const letters = Array.from(text)
+export default function BouncingText({
+  text,
+  className,
+  delay = 0,
+}: BouncingTextProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
+  const letters = Array.from(text);
 
   const container = {
     hidden: { opacity: 0 },
-    visible: (i = 1) => ({
+    visible: () => ({
       opacity: 1,
       transition: { staggerChildren: 0.12, delayChildren: delay },
     }),
-  }
+  };
 
   const child = {
     visible: {
@@ -41,7 +47,7 @@ export default function BouncingText({ text, className, delay = 0 }: BouncingTex
         stiffness: 200,
       },
     },
-  }
+  };
 
   return (
     <motion.h2
@@ -57,5 +63,5 @@ export default function BouncingText({ text, className, delay = 0 }: BouncingTex
         </motion.span>
       ))}
     </motion.h2>
-  )
+  );
 }

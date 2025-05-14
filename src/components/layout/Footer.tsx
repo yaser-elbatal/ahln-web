@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import Link from "next/link";
 // Import icons (using placeholders for now, consider using @mui/icons-material or react-icons)
 // Example: import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -17,20 +19,6 @@ const IconPlaceholder = ({
   name: string;
   className?: string;
 }) => <span className={`inline-block text-gray-400 ${className}`}>{name}</span>;
-
-const PaymentIconPlaceholder = ({
-  name,
-  className,
-}: {
-  name: string;
-  className?: string;
-}) => (
-  <div
-    className={`inline-flex items-center justify-center w-10 h-6 bg-gray-600 rounded text-xs text-gray-300 ${className}`}
-  >
-    {name}
-  </div>
-);
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

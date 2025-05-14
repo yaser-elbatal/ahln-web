@@ -1,5 +1,7 @@
-import { getStripe } from '@/utils/stripe';
-import { useEffect, useState } from 'react';
+/* eslint-disable react/no-unescaped-entities */
+
+import { getStripe } from "@/utils/stripe";
+import { useEffect, useState } from "react";
 
 type Product = {
   id: string;
@@ -12,11 +14,15 @@ type Product = {
 
 export default function StripeProduct() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [selectedPrices, setSelectedPrices] = useState<{ [priceId: string]: boolean }>({});
+  const [selectedPrices, setSelectedPrices] = useState<{
+    [priceId: string]: boolean;
+  }>({});
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/stripe/products`);
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/stripe/products`
+      );
       const data = await res.json();
       setProducts(data);
     };
@@ -32,17 +38,20 @@ export default function StripeProduct() {
 
   const handleCheckout = async () => {
     const selectedItems = Object.entries(selectedPrices)
-      .filter(([_, checked]) => checked)
+      .filter(([, checked]) => checked)
       .map(([price]) => ({
         price,
         quantity: 1,
       }));
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/checkout/create-session`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: selectedItems }),
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/checkout/create-session`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: selectedItems }),
+      }
+    );
 
     const { sessionId } = await res.json();
     const stripe = await getStripe();
@@ -61,13 +70,17 @@ export default function StripeProduct() {
                 checked={selectedPrices[p.priceId] || false}
                 onChange={() => toggleProduct(p.priceId)}
               />
-              {p.name} — {(p.unit_amount / 100).toFixed(2)} {p.currency.toUpperCase()}
+              {p.name} — {(p.unit_amount / 100).toFixed(2)}{" "}
+              {p.currency.toUpperCase()}
             </label>
             {p.description && <p>{p.description}</p>}
           </li>
         ))}
       </ul>
-      <button onClick={handleCheckout} disabled={!Object.values(selectedPrices).some(Boolean)}>
+      <button
+        onClick={handleCheckout}
+        disabled={!Object.values(selectedPrices).some(Boolean)}
+      >
         Proceed to Checkout
       </button>
     </div>

@@ -1,7 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
+
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useScroll } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -11,8 +12,6 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     if (isMobileMenuOpen) {

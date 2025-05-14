@@ -1,19 +1,21 @@
-"use client"
+/* eslint-disable react/no-unescaped-entities */
 
-import * as React from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { DayPicker } from "react-day-picker"
+"use client";
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import * as React from "react";
+import { DayPicker } from "react-day-picker";
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker>
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
 function Calendar({
   className,
   classNames,
   showOutsideDays = true,
-  ...props
+  ...restProps // Rename to avoid unused 'props' error
 }: CalendarProps) {
   return (
     <DayPicker
@@ -54,13 +56,14 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
-        IconRight: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
+        IconLeft: ({ ..._ }: any) => <ChevronLeft className="h-4 w-4" />,
+        IconRight: ({ ..._ }: any) => <ChevronRight className="h-4 w-4" />,
       }}
-      {...props}
+      {...restProps} // Spread the remaining props here
     />
-  )
+  );
 }
-Calendar.displayName = "Calendar"
 
-export { Calendar }
+Calendar.displayName = "Calendar";
+
+export { Calendar };

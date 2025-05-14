@@ -63,8 +63,11 @@ export default function HeroSection() {
               { icon: "security.svg", text: "Security" },
               { icon: "moapp.svg", text: "App Control" },
               { icon: "liveStream.svg", text: "Live Stream" },
-            ].map((item) => (
-              <div className="flex flex-row items-center gap-1">
+            ].map((item, index) => (
+              <div
+                className="flex flex-row items-center gap-1"
+                key={index.toString()}
+              >
                 <img
                   src={`/icons/${item.icon}`}
                   alt="ball"

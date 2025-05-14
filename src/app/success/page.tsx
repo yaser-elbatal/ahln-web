@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 "use client";
 
 import popperAnimation from "@/../public/popper-animation1.json";

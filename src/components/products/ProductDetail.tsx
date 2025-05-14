@@ -1,17 +1,19 @@
+/* eslint-disable react/no-unescaped-entities */
+
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import BoxViewer from "../3d/BoxViewer";
 import UnderlineText from "../common/UnderlineText";
-import FeatureItem from "./FeatureItem";
-import MobileSlider from "./MobileSlider";
 import FAQSection from "../faq/FAQSection";
-import { motion, AnimatePresence, number } from "framer-motion";
 import CheckoutButton from "../stripe/CheckoutButton";
 import ColorCard from "./ColorCard";
-import BoxViewer from "../3d/BoxViewer";
-import { Product } from "./ProductsPage";
+import FeatureItem from "./FeatureItem";
+import MobileSlider from "./MobileSlider";
 import { products } from "./ProductsData";
+import { Product } from "./ProductsPage";
 
 interface ProductDetailProps {
   slug: string;
@@ -31,7 +33,9 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
   }, [slug]);
 
   const getProduct = () => {
-    let findProduct = products.find((product) => product.id == parseInt(slug));
+    const findProduct = products.find(
+      (product) => product.id == parseInt(slug)
+    );
     setProductInfo(findProduct || null);
   };
 
