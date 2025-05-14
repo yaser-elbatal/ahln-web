@@ -11,7 +11,7 @@ import RotatingBox from "../ui/RotatingBox";
 
 const features = [
   {
-    iconPlaceholder: "/icons/moApp.svg",
+    iconPlaceholder: "/icons/MoApp.svg",
     title: "Mobile Application Control",
     description: "Enable control via the AHLN Box app",
     image: "/images/mobileScreen4.png",
