@@ -37,6 +37,7 @@ export default function Footer() {
           alt="footer background"
           className="w-full md:hidden"
         />
+
       </div>
       <div className="container mx-auto px-4 relative z-10 justify-between">
         {/* Top Section: Links and Info */}
@@ -83,40 +84,6 @@ export default function Footer() {
               </Link>
             </div>
           </div>
-
-          {/* Column 2: Quick Links
-          <div>
-            <h5 className="text-lg font-semibold text-white mb-4">
-              Quick Links
-            </h5>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="#" className="hover:text-white">
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-white">
-                  Benefits
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-white">
-                  How It Works
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-white">
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-white">
-                  FAQ
-                </Link>
-              </li>
-            </ul>
-          </div> */}
 
           {/* Column 3: Contact */}
           <div>
