@@ -33,7 +33,7 @@ export default function Footer() {
           className="w-full md:block hidden"
         />
         <img
-          src="/object.svg"
+          src="/mobilefooter.svg"
           alt="footer background"
           className="w-full md:hidden"
         />

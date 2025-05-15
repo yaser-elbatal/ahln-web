@@ -59,7 +59,7 @@ export default function LatestHappenings() {
     <section
       className={clsx(
         "py-16 px-4 md:px-16 transition-colors duration-500",
-        "bg-[#0a0f1c] text-white"
+        "bg-[#080f22] text-white"
       )}
     >
       <div className="text-center mb-10">

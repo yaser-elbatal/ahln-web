@@ -5,13 +5,13 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-type BoxColor = "bluegrey" | "pebblegrey" | "oysterwhite";
+type BoxType = "max" | "mini";
 
 interface BoxViewerProps {
-  color: BoxColor;
+  BoxType: BoxType;
 }
 
-export default function BoxViewer({ color = "bluegrey" }: BoxViewerProps) {
+export default function BoxViewer({ BoxType }: BoxViewerProps) {
   const mountRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -30,7 +30,7 @@ export default function BoxViewer({ color = "bluegrey" }: BoxViewerProps) {
 
     // Camera setup
     const camera = new THREE.PerspectiveCamera(
-      75,
+      BoxType === "max" ? 75 : 10,
       mountRef.current.clientWidth / mountRef.current.clientHeight,
       0.1,
       1000
@@ -82,7 +82,7 @@ export default function BoxViewer({ color = "bluegrey" }: BoxViewerProps) {
 
     const loader = new GLTFLoader();
     loader.load(
-      `/3d/${color}/box.glb`,
+      `/3d/${BoxType}/box.glb`,
       (gltf) => {
         const box = new THREE.Box3().setFromObject(gltf.scene);
         const center = box.getCenter(new THREE.Vector3());
@@ -162,7 +162,7 @@ export default function BoxViewer({ color = "bluegrey" }: BoxViewerProps) {
 
   useEffect(() => {
     loadModel();
-  }, [color]);
+  }, [BoxType]);
 
   return (
     <div className="w-full h-full">

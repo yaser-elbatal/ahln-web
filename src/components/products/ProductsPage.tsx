@@ -30,12 +30,14 @@ type Accessory = {
 export type Product = {
   id: number;
   name: string;
+  model: "mini" | "max";
   image: string;
   description: string;
   tags: string[];
   specifications: { label: string; value: string }[];
   accessories: Accessory[];
   bannerImage: string;
+  bannerImageMobile: string;
   carouselImages: string[];
   colorBanners: {
     [key: string]: string;
