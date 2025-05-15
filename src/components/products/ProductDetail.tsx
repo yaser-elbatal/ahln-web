@@ -36,7 +36,9 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
 
   const getProduct = () => {
     setIsLoading(true);
-    let findProduct = products.find((product) => product.id == parseInt(slug));
+    const findProduct = products.find(
+      (product) => product.id == parseInt(slug)
+    );
     setProductInfo(findProduct || null);
     setIsLoading(false);
     if (!findProduct) {
