@@ -4,8 +4,10 @@ export const products: Product[] = [
   {
     id: 1,
     name: "AHLN Max",
+    model: "max",
     image: "/images/max.png",
     bannerImage: "/images/ahln-max.jpg",
+    bannerImageMobile: "/images/max-mobilebanner.jpg",
     description:
       "Our flagship smart delivery box, perfect for businesses and multi-unit buildings. Features advanced security systems and larger storage capacity.",
     tags: ["Large Capacity", "Advanced Security", "Multi-unit"],
@@ -93,8 +95,10 @@ export const products: Product[] = [
   {
     id: 2,
     name: "AHLN Mini",
+    model: "mini",
     image: "/images/mini.png",
     bannerImage: "/images/ahln-mini.jpg",
+    bannerImageMobile: "/images/mini-mobilebanner.jpg",
     description:
       "Compact and efficient, designed for residential use. Perfect for homes and small businesses requiring secure package delivery.",
     tags: ["Compact", "Residential", "Easy Setup"],

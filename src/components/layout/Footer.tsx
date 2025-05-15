@@ -32,6 +32,12 @@ export default function Footer() {
           alt="footer background"
           className="w-full md:block hidden"
         />
+        <img
+          src="/mobilefooter.svg"
+          alt="footer background"
+          className="w-full md:hidden"
+        />
+
       </div>
       <div className="container mx-auto px-4 relative z-10 justify-between">
         {/* Top Section: Links and Info */}
