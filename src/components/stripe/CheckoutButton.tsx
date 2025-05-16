@@ -10,7 +10,7 @@ type CheckoutButtonProps = {
   }[];
   disabled?: boolean;
   metadata?: {
-    [key: string]: any;
+    [key: string]: string | number | object | [] | null;
   };
 };
 
