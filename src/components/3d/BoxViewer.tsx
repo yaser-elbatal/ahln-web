@@ -30,7 +30,7 @@ export default function BoxViewer({ BoxType }: BoxViewerProps) {
 
     // Camera setup
     const camera = new THREE.PerspectiveCamera(
-      BoxType === "max" ? 75 : 10,
+      BoxType === "max" ? 75 : 2,
       mountRef.current.clientWidth / mountRef.current.clientHeight,
       0.1,
       1000

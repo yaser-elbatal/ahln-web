@@ -9,11 +9,15 @@ type CheckoutButtonProps = {
     quantity: number;
   }[];
   disabled?: boolean;
+  metadata?: {
+    [key: string]: string | number | object | [] | null;
+  };
 };
 
 const CheckoutButton: React.FC<CheckoutButtonProps> = ({
   selectedItems,
   disabled,
+  metadata,
 }) => {
   const [loading, setLoading] = useState(false);
 
@@ -27,7 +31,7 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ items: selectedItems }), // ✅ send items here
+        body: JSON.stringify({ items: selectedItems, metadata }), // ✅ send items here
       }
     );
 

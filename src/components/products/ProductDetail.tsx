@@ -431,6 +431,9 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                         quantity: 1,
                       })),
                     ]}
+                    metadata={{
+                      color: selectedColor,
+                    }}
                     disabled={!selectedColor}
                   />
                 </div>
