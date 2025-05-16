@@ -31,6 +31,7 @@ export type Product = {
   id: number;
   name: string;
   model: "mini" | "max";
+  status: boolean;
   image: string;
   description: string;
   tags: string[];
@@ -52,25 +53,34 @@ export type Product = {
 
 // Product Card Component
 function ProductCard({ product }: { product: Product }) {
-  return (
-    <Link
-      href={{
-        pathname: `/products/${product.id}`,
-      }}
-      className={`group backdrop-blur-sm rounded-2xl p-6 lg:p-8 transition-all duration-300 border ${COLOR.border} ${COLOR.hover} block  cursor-pointer`}
+  const cardContent = (
+    <div
+      className={`group backdrop-blur-sm rounded-2xl p-6 lg:p-8 transition-all duration-300 border ${
+        COLOR.border
+      } ${product.status ? COLOR.hover : ""} block ${
+        product.status ? "cursor-pointer" : "cursor-not-allowed"
+      }`}
     >
-      <div className="relative  mb-6 overflow-hidden">
+      <div className="relative mb-6 overflow-hidden">
         <Image
           src={product.image}
           alt={product.name}
           width={400}
           height={400}
-          className="object-contain w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+          className={`object-contain w-full h-full transform ${
+            product.status ? "group-hover:scale-105" : ""
+          } transition-transform duration-300 ${
+            !product.status ? "opacity-50" : ""
+          }`}
         />
+        {!product.status && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-2xl font-bold text-white bg-black/50 px-4 py-2 rounded-lg">
+              Coming Soon
+            </span>
+          </div>
+        )}
       </div>
-      {/* <h2 className={`text-2xl font-bold mb-3 ${COLORS.text.accent}`}>
-        {product.name}
-      </h2> */}
       <p className={`mb-6 text-lg ${COLOR.text.secondary}`}>
         {product.description}
       </p>
@@ -87,7 +97,13 @@ function ProductCard({ product }: { product: Product }) {
           </span>
         ))}
       </div>
-    </Link>
+    </div>
+  );
+
+  return product.status ? (
+    <Link href={{ pathname: `/products/${product.id}` }}>{cardContent}</Link>
+  ) : (
+    cardContent
   );
 }
 

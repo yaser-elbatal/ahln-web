@@ -20,7 +20,7 @@ const events = [
     image: "/images/NMK05481.jpg",
     description:
       "Experience AHLN Box's cutting-edge delivery solutions at GITEX Dubai. Visit our booth B7-25 for live demonstrations and exclusive insights into our latest innovations.",
-    videoUrl: "/videos/GITEX.mp4",
+    videoUrl: "/videos/GITEX.MP4",
     images: [
       "/images/NMK05481.jpg",
       "/images/NMK05467.jpg",
