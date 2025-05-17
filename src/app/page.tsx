@@ -52,7 +52,15 @@ export default function Home() {
             src="/images/delivery-box.jpg"
             alt="Smart Delivery System"
             fill
-            className="object-cover opacity-30"
+            className="object-cover opacity-30 md:block hidden"
+            priority
+          />
+
+          <Image
+            src="/images/delivery-box-mobile.jpg"
+            alt="Smart Delivery System"
+            fill
+            className="object-cover opacity-30 md:hidden block"
             priority
           />
         </motion.div>
@@ -60,7 +68,7 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <BouncingText
-            text="Ahln"
+            text="Ahln."
             className="text-6xl md:text-8xl font-bold text-cyan-400 mb-4"
             delay={0.3}
           />
@@ -116,7 +124,7 @@ export default function Home() {
                   pathname: `/products`,
                 }}
               >
-                Discover Ahln
+                Discover Ahln.
               </Link>
             </Button>
           </motion.div>
@@ -159,14 +167,14 @@ export default function Home() {
                 number: 1,
                 title: "Order Online",
                 description:
-                  "Shop from your favorite retailers and select AHLN Box for your delivery option.",
+                  "Shop from your favorite retailers and select Ahln. Box for your delivery option.",
                 icon: "/images/shipment.png",
               },
               {
                 number: 2,
                 title: "Courier Delivers",
                 description:
-                  "The courier securely deposits your package in the AHLN Box designed for you.",
+                  "The courier securely deposits your package in the Ahln. Box designed for you.",
                 icon: "/images/Delivers.png",
               },
               {

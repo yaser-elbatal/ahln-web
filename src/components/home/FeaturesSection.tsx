@@ -13,7 +13,7 @@ const features = [
   {
     iconPlaceholder: "/icons/MoApp.svg",
     title: "Mobile Application Control",
-    description: "Enable control via the AHLN Box app",
+    description: "Enable control via the Ahln. Box app",
     image: "/images/mobileScreen4.png",
   },
   {

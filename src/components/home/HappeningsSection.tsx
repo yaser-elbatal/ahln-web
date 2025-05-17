@@ -19,7 +19,7 @@ const events = [
     date: "October 14–18, 2024",
     image: "/images/NMK05481.jpg",
     description:
-      "Experience AHLN Box's cutting-edge delivery solutions at GITEX Dubai. Visit our booth B7-25 for live demonstrations and exclusive insights into our latest innovations.",
+      "Experience Ahln. Box's cutting-edge delivery solutions at GITEX Dubai. Visit our booth B7-25 for live demonstrations and exclusive insights into our latest innovations.",
     videoUrl: "/videos/GITEX.MP4",
     images: [
       "/images/NMK05481.jpg",
@@ -38,7 +38,7 @@ const events = [
     date: "May 1–10, 2025",
     image: "/images/GiTex.jpg",
     description:
-      "Discover how AHLN Box leverages artificial intelligence to revolutionize package delivery. Join us at the Global AI Exhibition for an immersive experience.",
+      "Discover how Ahln. Box leverages artificial intelligence to revolutionize package delivery. Join us at the Global AI Exhibition for an immersive experience.",
     videoUrl: "/videos/AI.MP4",
   },
 ];
@@ -67,7 +67,7 @@ export default function LatestHappenings() {
           Latest Happenings
         </h2>
         <p className="text-lg text-gray-400 dark:text-gray-300">
-          Stay updated with AHLN Box's presence at major industry events and
+          Stay updated with Ahln. Box's presence at major industry events and
           exhibitions.
         </p>
       </div>

@@ -103,13 +103,13 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
           <div className="w-full h-[80vh] md:h-[90vh] overflow-hidden relative mb-16">
             <Image
               src={productInfo?.bannerImage || "/images/ahln-max.jpg"}
-              alt="AHLN Max"
+              alt="Ahln. Max"
               fill
               className="hidden md:block object-cover "
             />
             <Image
               src={productInfo?.bannerImageMobile || "/images/ahln-max.jpg"}
-              alt="AHLN Max Mobile"
+              alt="Ahln. Max Mobile"
               fill
               className="md:hidden block object-cover "
             />
@@ -138,7 +138,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                           ? colorBanners[selectedColor]
                           : carouselImages[currentImageIndex]
                       }
-                      alt={`AHLN Max View ${currentImageIndex + 1}`}
+                      alt={`Ahln. Max View ${currentImageIndex + 1}`}
                       fill
                       className="object-cover transition-transform duration-200"
                       style={{
@@ -192,6 +192,26 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                 <div
                   className={`h-full flex flex-col bg-white/5 backdrop-blur-lg rounded-3xl p-4 md:p-6 shadow-xl border border-white/10 md:overflow-y-auto`}
                 >
+                  {/* Product Price Section */}
+                  <div className="mb-6">
+                    <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                      {productInfo?.name}
+                    </h1>
+                    <div className="flex items-center gap-2 mb-6">
+                      <Image
+                        src="/DirhamSymbol.svg"
+                        alt="Dirham"
+                        width={24}
+                        height={24}
+                        className="inline-block"
+                      />
+                      <span className="text-3xl font-bold text-white">
+                        {productInfo?.price}
+                      </span>
+                    </div>
+                    <p className="text-gray-300">{productInfo?.description}</p>
+                  </div>
+
                   {/* Accordion Sections */}
                   <div className="flex flex-col h-full space-y-4">
                     {/* Specifications Accordion */}
@@ -420,15 +440,14 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                   <CheckoutButton
                     selectedItems={[
                       {
-                        price:
-                          slug === "ahln-max"
-                            ? "price_1RMjd6DHoZtoEuq1TTL7lU4O"
-                            : "price_1RMk8UDHoZtoEuq1FtGXdTmr",
+                        price: productInfo?.stripePriceId || "",
                         quantity: 1,
+                        amount: productInfo?.price || 0,
                       },
                       ...selectedAccessories.map((accessory) => ({
                         price: accessory.priceId,
                         quantity: 1,
+                        amount: accessory.price,
                       })),
                     ]}
                     metadata={{

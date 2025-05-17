@@ -37,14 +37,13 @@ export default function Footer() {
           alt="footer background"
           className="w-full md:hidden"
         />
-
       </div>
       <div className="container mx-auto px-4 relative z-10 justify-between">
         {/* Top Section: Links and Info */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 mt-5 justify-between">
-          {/* Column 1: AHLN Info */}
+          {/* Column 1: Ahln. Info */}
           <div>
-            <h5 className="text-lg font-semibold text-white mb-4">AHLN</h5>
+            <h5 className="text-lg font-semibold text-white mb-4">Ahln.</h5>
             <p className="text-sm mb-4 leading-relaxed">
               Revolutionizing package delivery with secure, convenient, and
               contactless solutions.
@@ -97,7 +96,7 @@ export default function Footer() {
                   height={20}
                 />
                 <span className="ml-2">
-                  mamzar, Dubai, United Arab Emirates
+                  Al Mamzar, Dubai, United Arab Emirates
                 </span>
               </li>
               <li className="flex items-center">
@@ -153,7 +152,7 @@ export default function Footer() {
         {/* Bottom Section: Copyright and Legal */}
         <div className="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
           <p className="mb-4 md:mb-0">
-            &copy; {currentYear} AHLN . All rights reserved.
+            &copy; {currentYear} Ahln. . All rights reserved.
           </p>
           <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
             <div className="flex space-x-4">

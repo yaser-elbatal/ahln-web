@@ -25,7 +25,7 @@ export default function NewsletterSection() {
           {/* Left Column: Info & Preview */}
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Stay Connected with AHLN Box
+              Stay Connected with Ahln.
             </h2>
             <p className="text-gray-400 mb-8">
               Subscribe to our newsletter for exclusive updates, industry
@@ -95,7 +95,7 @@ export default function NewsletterSection() {
                 />
                 <label htmlFor="terms" className="text-sm text-gray-400">
                   I agree to receive marketing communications and agree to the
-                  AHLN Box{" "}
+                  Ahln. Box{" "}
                   <a
                     href="/privacy-policy"
                     className="text-secondary hover:underline"

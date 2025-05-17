@@ -61,7 +61,7 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="block"
             >
-              Mamzar , Dubai, United arab emirates
+              32 Al Rasheed Rd - Al Mamzar , Dubai, United Arab Emirates
             </a>
           </div>
         </motion.div>
@@ -138,7 +138,7 @@ export default function ContactPage() {
           transition={{ duration: 0.6 }}
           className="text-xl mb-2"
         >
-          Stay Connected with AHLN Box
+          Stay Connected with Ahln.
         </motion.h3>
         <p className="text-gray-400 mb-6">
           Subscribe for latest updates, demos & events
