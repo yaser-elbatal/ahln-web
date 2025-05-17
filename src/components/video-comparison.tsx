@@ -51,7 +51,7 @@ export default function VideoComparison({
   };
 
   return (
-    <div className="grid md:grid-cols-2 gap-8">
+    <div className="grid md:grid-cols-2 gap-8 max-h-max">
       {/* Before Ahln Video */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -60,10 +60,10 @@ export default function VideoComparison({
         viewport={{ once: false, amount: 0.3 }}
         className="relative rounded-2xl overflow-hidden shadow-2xl shadow-cyan-900/20"
       >
-        <div className="flex justify-center items-center w-full bg-black">
+        <div className="relative w-full h-[1000px] bg-black rounded-2xl overflow-hidden shadow-2xl shadow-cyan-900/20">
           <video
             id="before-video"
-            className="w-full max-h-[600px] object-fill"
+            className="w-full h-full object-cover"
             src={beforeVideoSrc}
             muted
             playsInline
@@ -103,10 +103,10 @@ export default function VideoComparison({
         viewport={{ once: false, amount: 0.3 }}
         className="relative rounded-2xl overflow-hidden shadow-2xl shadow-cyan-900/20"
       >
-        <div className="flex justify-center items-center w-full bg-black">
+        <div className="relative w-full h-[1000px] bg-black rounded-2xl overflow-hidden shadow-2xl shadow-cyan-900/20">
           <video
             id="after-video"
-            className="w-full max-h-[600px] object-fill"
+            className="w-full h-full object-cover"
             src={afterVideoSrc}
             muted
             playsInline
