@@ -78,7 +78,7 @@ export default function AhlnSection() {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-12"
         >
-          What is Ahln?
+          What is Ahln.?
         </motion.h2>
 
         <AhlnVedio />

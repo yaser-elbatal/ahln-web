@@ -58,9 +58,8 @@ export default function SuccessPage() {
           Thank You for Your Purchase!
         </h1>
         <p className="text-gray-600">
-          Your <span className="font-semibold text-black">Ahln – Smart</span>
+          Your <span className="font-semibold text-black">Ahln. Box</span>
           <br />
-          <h6>Secured Delivery</h6>
           has been ordered successfully. A confirmation email has been sent to
           your registered address.
         </p>

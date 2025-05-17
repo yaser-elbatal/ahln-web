@@ -31,6 +31,8 @@ export type Product = {
   id: number;
   name: string;
   model: "mini" | "max";
+  price: number;
+  stripePriceId: string;
   status: boolean;
   image: string;
   description: string;

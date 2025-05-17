@@ -7,6 +7,7 @@ type CheckoutButtonProps = {
   selectedItems: {
     price: string;
     quantity: number;
+    amount?: number;
   }[];
   disabled?: boolean;
   metadata?: {
@@ -24,6 +25,13 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
   const handleCheckout = async () => {
     setLoading(true);
 
+    const stripeItems = selectedItems.map(({ price, quantity }) => ({
+      price,
+      quantity,
+    }));
+
+    console.log("stripeItems", stripeItems);
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/stripe/create-session`,
       {
@@ -31,7 +39,7 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ items: selectedItems, metadata }), // ✅ send items here
+        body: JSON.stringify({ items: stripeItems, metadata }),
       }
     );
 
@@ -54,7 +62,16 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
         }}
         disabled={disableButton}
       >
-        <span>{loading ? "Redirecting..." : "Place Order"}</span>
+        <span>
+          {loading
+            ? "Redirecting..."
+            : `Place Order (AED ${selectedItems
+                .reduce(
+                  (total, item) => total + (item.amount || 0) * item.quantity,
+                  0
+                )
+                .toLocaleString()})`}
+        </span>
         <svg
           className="w-5 h-5"
           fill="none"

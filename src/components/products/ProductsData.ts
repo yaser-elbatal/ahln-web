@@ -3,12 +3,14 @@ import { Product } from "./ProductsPage";
 export const products: Product[] = [
   {
     id: 1,
-    name: "AHLN Max",
+    name: "Ahln. Max",
     model: "max",
     status: true,
+    price: 8900,
     image: "/images/max.png",
     bannerImage: "/images/ahln-max.jpg",
     bannerImageMobile: "/images/max-mobilebanner.jpg",
+    stripePriceId: "price_1RPMW5DHoZtoEuq1MOQdfBKc",
     description:
       "Our flagship smart delivery box, perfect for businesses and multi-unit buildings. Features advanced security systems and larger storage capacity.",
     tags: ["Large Capacity", "Advanced Security", "Multi-unit"],
@@ -95,12 +97,14 @@ export const products: Product[] = [
   },
   {
     id: 2,
-    name: "AHLN Mini",
+    name: "Ahln. Mini",
     model: "mini",
     status: false,
+    price: 5900,
     image: "/images/mini.png",
     bannerImage: "/images/ahln-mini.jpg",
     bannerImageMobile: "/images/mini-mobilebanner.jpg",
+    stripePriceId: "price_1RMk8UDHoZtoEuq1FtGXdTmr",
     description:
       "Compact and efficient, designed for residential use. Perfect for homes and small businesses requiring secure package delivery.",
     tags: ["Compact", "Residential", "Easy Setup"],

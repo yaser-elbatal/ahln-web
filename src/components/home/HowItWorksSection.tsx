@@ -9,14 +9,14 @@ const steps = [
     number: 1,
     title: "Order Online",
     description:
-      "Shop from your favorite retailers and select AHLN Box for your delivery option.",
+      "Shop from your favorite retailers and select Ahln. Box for your delivery option.",
     icon: "/images/shipment.png",
   },
   {
     number: 2,
     title: "Courier Delivers",
     description:
-      "The courier securely deposits your package in the AHLN Box designed for you.",
+      "The courier securely deposits your package in the Ahln. Box designed for you.",
     icon: "/images/Delivers.png",
   },
   {
@@ -74,7 +74,7 @@ export default function HowItWorksSection() {
       <div className="container mx-auto px-4">
         <motion.div variants={fadeInUp} className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-            How Ahln Works
+            How Ahln. Works
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             A simple, streamlined process that makes package delivery and

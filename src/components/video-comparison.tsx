@@ -73,7 +73,7 @@ export default function VideoComparison({
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           <div className="absolute top-0 left-0 right-0 p-4 flex justify-center items-center bg-black/80">
             <h3 className="text-4xl font-semibold text-white">
-              Life <span className="text-cyan-400">before</span> Ahln
+              Life <span className="text-cyan-400">before</span> Ahln.
             </h3>
           </div>
           <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-end items-center">
@@ -116,7 +116,7 @@ export default function VideoComparison({
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           <div className="absolute top-0 left-0 right-0 p-4 flex justify-center items-center bg-black/80">
             <h3 className="text-4xl font-semibold text-white">
-              Life <span className="text-cyan-400">with</span> Ahln
+              Life <span className="text-cyan-400">with</span> Ahln.
             </h3>
           </div>
           <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-end items-center">

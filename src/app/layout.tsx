@@ -7,7 +7,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AHLN - Smart Delivery System",
+  title: "Ahln. - Smart Delivery System",
   description: "Secure and efficient package delivery.",
 };
 

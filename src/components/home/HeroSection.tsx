@@ -46,7 +46,7 @@ export default function HeroSection() {
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight mb-6">
             <span className=" font-semibold md:text-8xl text-5xl text-primary">
-              Ahln{" "}
+              Ahln.{" "}
             </span>
             <br />{" "}
             <span className=" font-semibold md:text-5xl text-2xl mt-5">
