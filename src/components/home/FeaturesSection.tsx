@@ -164,7 +164,7 @@ export default function FeaturesSection() {
           // 🖥️ Desktop Hover Interaction
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <RotatingBox
-              imageSrc={hoveredImage ?? "/images/Powerful-App.png"}
+              imageSrc={hoveredImage ?? "/images/powerful-app.png"}
             />
             <ul className="space-y-6">
               {features.map((feature, index) => (
