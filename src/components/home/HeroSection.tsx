@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   return (
     <motion.section
       className="w-full min-h-screen bg-main-gradient flex flex-col items-center relative overflow-hidden"

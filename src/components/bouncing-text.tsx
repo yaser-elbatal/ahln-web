@@ -19,7 +19,6 @@ export default function BouncingText({
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   const { lang } = useLanguage();
-  const isRTL = lang === "ar";
 
   const letters = Array.from(text);
 
