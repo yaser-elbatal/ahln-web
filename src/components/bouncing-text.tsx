@@ -1,6 +1,5 @@
 "use client";
 
-import { useLanguage } from "@/context/LanguageContext";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
@@ -17,8 +16,6 @@ export default function BouncingText({
 }: BouncingTextProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
-
-  const { lang } = useLanguage();
 
   const letters = Array.from(text);
 
