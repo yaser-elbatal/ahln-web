@@ -46,7 +46,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isLoading, setIsLoading] = useState(true);
   const { t } = useLanguage();
-  const products = getProducts(t);
+  const products = getProducts();
 
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [productInfo, setProductInfo] = useState<Product | null>(null);
