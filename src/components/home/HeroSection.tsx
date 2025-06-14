@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function HeroSection() {
+  const { t, lang } = useLanguage();
   return (
     <motion.section
       className="w-full min-h-screen bg-main-gradient flex flex-col items-center relative overflow-hidden"
@@ -50,22 +52,22 @@ export default function HeroSection() {
             </span>
             <br />{" "}
             <span className=" font-semibold md:text-5xl text-2xl mt-5">
-              Smart Secured Delivery
+              {t("heroSubtitle")}
             </span>
           </h1>
 
           <p className="text-gray-300 font-medium text-base sm:text-lg mb-6 leading-relaxed">
-            Reinventing how packages arrive at your doorstep
+            {t("heroDescription")}
           </p>
 
           <div className="flex flex-row gap-5">
             {[
-              { icon: "security.svg", text: "Security" },
-              { icon: "moapp.svg", text: "App Control" },
-              { icon: "liveStream.svg", text: "Live Stream" },
+              { icon: "security.svg", key: "security" },
+              { icon: "moapp.svg", key: "appControl" },
+              { icon: "liveStream.svg", key: "liveStream" },
             ].map((item, index) => (
               <div
-                className="flex flex-row items-center gap-1"
+                className="flex flex-row items-center gap-1 rtl:flex-row-reverse"
                 key={index.toString()}
               >
                 <img
@@ -75,7 +77,7 @@ export default function HeroSection() {
                   height={25}
                 />
 
-                <h6 className="text-md font-medium">{item.text}</h6>
+                <h6 className="text-md font-medium">{t(item.key)}</h6>
               </div>
             ))}
           </div>
@@ -93,36 +95,18 @@ export default function HeroSection() {
           {/* Buttons */}
           <motion.div
             className="flex gap-4 flex-wrap mt-6"
-            initial="hidden"
-            whileInView="visible"
-            variants={{
-              hidden: {},
-              visible: {
-                transition: {
-                  staggerChildren: 0.2,
-                },
-              },
-            }}
-            viewport={{ once: true }} // Add this line to make it animate only once
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
           >
-            {["Order Now"].map((text, i) => (
-              <motion.button
-                key={text}
-                className={`${
-                  i === 0
-                    ? "bg-primary hover:bg-secondary"
-                    : "border border-secondary hover:bg-secondary"
-                } text-white px-6 py-3 rounded-md font-medium transition duration-300`}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {text}
-              </motion.button>
-            ))}
+            <motion.button
+              className="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-md font-medium transition duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {t("orderNow")}
+            </motion.button>
           </motion.div>
         </motion.div>
 

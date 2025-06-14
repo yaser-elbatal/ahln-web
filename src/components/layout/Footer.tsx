@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
+"use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
 // Import icons (using placeholders for now, consider using @mui/icons-material or react-icons)
 // Example: import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -21,14 +23,15 @@ const IconPlaceholder = ({
 }) => <span className={`inline-block text-gray-400 ${className}`}>{name}</span>;
 
 export default function Footer() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
     // Remove relative/overflow, adjust top padding (e.g., pt-16 or pt-12)
-    <footer className=" text-gray-300 pb-8">
+    <footer className=" text-text-300 pb-8">
       <div className="w-screen ">
         <img
-          src="/footerBG.svg"
+          src="/footer.svg"
           alt="footer background"
           className="w-full md:block hidden"
         />
@@ -40,15 +43,14 @@ export default function Footer() {
       </div>
       <div className="container mx-auto px-4 relative z-10 justify-between">
         {/* Top Section: Links and Info */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 mt-5 justify-between">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 mt-5">
           {/* Column 1: Ahln. Info */}
           <div>
-            <h5 className="text-lg font-semibold text-white mb-4">Ahln.</h5>
-            <p className="text-sm mb-4 leading-relaxed">
-              Revolutionizing package delivery with secure, convenient, and
-              contactless solutions.
+            <h5 className="text-lg font-semibold text-primary mb-4">Ahln.</h5>
+            <p className="text-sm mb-4 leading-relaxed text-text">
+              {t("companyDescription")}
             </p>
-            <div className="flex space-x-4">
+            {/* <div className="flex space-x-4">
               <Link href="#" className="text-gray-400 hover:text-white">
                 <img
                   src="/icons/facebook.svg"
@@ -81,12 +83,14 @@ export default function Footer() {
                   height={40}
                 />
               </Link>
-            </div>
+            </div> */}
           </div>
 
           {/* Column 3: Contact */}
           <div>
-            <h5 className="text-lg font-semibold text-white mb-4 ">Contact</h5>
+            <h5 className="text-lg font-semibold text-text mb-4 ">
+              {t("contactTitle")}
+            </h5>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start">
                 <img
@@ -95,13 +99,16 @@ export default function Footer() {
                   width={20}
                   height={20}
                 />
-                <span className="ml-2">
-                  Al Mamzar, Dubai, United Arab Emirates
+                <span className="ltr:ml-2 rtl:mr-2 text-text">
+                  {t("address")}
                 </span>
               </li>
               <li className="flex items-center">
                 <img src="/icons/call.svg" alt="call" width={20} height={20} />
-                <a href="tel:+971 4 269 3935" className="hover:text-white ml-2">
+                <a
+                  href="tel:+971 4 269 3935"
+                  className="text-text ltr:ml-2 rtl:mr-2"
+                >
                   +971 4 269 3935
                 </a>
               </li>
@@ -113,10 +120,10 @@ export default function Footer() {
                   height={20}
                 />
                 <a
-                  href="mailto:info@dccme.ai"
-                  className="hover:text-white ml-2"
+                  href="mailto:info@ahln.ae"
+                  className="text-text ltr:ml-2 rtl:mr-2"
                 >
-                  info@dccme.ai
+                  info@ahln.ae
                 </a>
               </li>
             </ul>
@@ -124,25 +131,23 @@ export default function Footer() {
 
           {/* Column 4: Stay Updated */}
           <div>
-            <h5 className="text-lg font-semibold text-white mb-4">
-              Stay Updated
+            <h5 className="text-lg font-semibold text-text mb-4">
+              {t("stayUpdated")}
             </h5>
-            <p className="text-sm mb-4">
-              Subscribe to our newsletter for the latest updates and offers.
-            </p>
+            <p className="text-sm text-text mb-4">{t("subscribeDesc")}</p>
             <form className="flex">
               <input
                 type="email"
-                placeholder="Your email"
-                className="flex-grow px-3 py-2 bg-gray-700 border border-gray-600 rounded-l-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white placeholder-gray-500 text-sm"
+                placeholder={t("emailPlaceholder")}
+                className="flex-grow px-3 py-2 bg-background-700 border border-gray-600 rounded-l-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-text placeholder-gray-500 text-sm"
                 aria-label="Email for newsletter"
               />
               <button
                 type="submit"
-                className="bg-secondary hover:bg-secondary text-white px-3 py-2 rounded-r-md flex items-center justify-center"
+                className="bg-secondary hover:bg-secondary text-text px-3 py-2 rounded-r-md flex items-center justify-center"
                 aria-label="Subscribe to newsletter"
               >
-                <IconPlaceholder name="Send" className="text-white" />{" "}
+                <IconPlaceholder name={t("Send")} className="text-white" />{" "}
                 {/* Replace with Send icon */}
               </button>
             </form>
@@ -150,20 +155,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section: Copyright and Legal */}
-        <div className="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-          <p className="mb-4 md:mb-0">
-            &copy; {currentYear} Ahln. . All rights reserved.
+        <div className="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-400">
+          <p className="mb-4 md:mb-0 text-text">
+            &copy; {currentYear} Ahln. All rights reserved.
           </p>
           <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
             <div className="flex space-x-4">
-              <Link href="/privacy-policy" className="hover:text-white">
-                Privacy Policy
+              <Link href="/privacy-policy" className="text-text">
+                {t("privacyPolicy")}
               </Link>
-              <Link href="/terms-of-service" className="hover:text-white">
-                Terms of Service
+              <Link href="/terms-of-service" className="text-text">
+                {t("termsOfService")}
               </Link>
-              <Link href="/cookie-policy" className="hover:text-white">
-                Cookie Policy
+              <Link href="/cookie-policy" className="text-text">
+                {t("cookiePolicy")}
               </Link>
             </div>
           </div>

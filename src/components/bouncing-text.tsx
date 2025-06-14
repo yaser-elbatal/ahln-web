@@ -1,7 +1,6 @@
-/* eslint-disable react/no-unescaped-entities */
-
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
@@ -13,46 +12,39 @@ interface BouncingTextProps {
 
 export default function BouncingText({
   text,
-  className,
+  className = "",
   delay = 0,
 }: BouncingTextProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.5 });
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+
+  const { lang } = useLanguage();
+  const isRTL = lang === "ar";
+
   const letters = Array.from(text);
 
   const container = {
     hidden: { opacity: 0 },
-    visible: () => ({
+    visible: {
       opacity: 1,
       transition: { staggerChildren: 0.12, delayChildren: delay },
-    }),
+    },
   };
 
   const child = {
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 200,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      y: 20,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 200,
-      },
+      transition: { type: "spring", damping: 12, stiffness: 200 },
     },
   };
 
   return (
     <motion.h2
       ref={ref}
-      className={className}
+      dir={"ltr"}
+      className={`text-center w-full ${className}`}
       variants={container}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}

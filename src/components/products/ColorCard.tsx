@@ -20,7 +20,7 @@ const ColorCard: React.FC<ColorCardProps> = ({
     <motion.div
       whileHover={{ scale: 1.05 }}
       className={`flex items-center rounded-lg px-1 py-2 shadow-md h-[50px] mt-10 cursor-pointer ${
-        selected ? "bg-blue-200 border-2 border-blue-700" : "bg-white"
+        selected ? " border-2 border-primary" : "bg-white"
       }`}
       onClick={onclick}
     >

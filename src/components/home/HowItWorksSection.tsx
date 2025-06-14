@@ -3,39 +3,38 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useMemo } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
-const steps = [
-  {
-    number: 1,
-    title: "Order Online",
-    description:
-      "Shop from your favorite retailers and select Ahln. Box for your delivery option.",
-    icon: "/images/shipment.png",
-  },
-  {
-    number: 2,
-    title: "Courier Delivers",
-    description:
-      "The courier securely deposits your package in the Ahln. Box designed for you.",
-    icon: "/images/Delivers.png",
-  },
-  {
-    number: 3,
-    title: "Receive Notification",
-    description:
-      "Get instantly notified via our app when your package has been delivered.",
-    icon: "/images/Receive.png",
-  },
-  {
-    number: 4,
-    title: "Pickup Anytime",
-    description:
-      "Collect your package at your convenience using our secure access system.",
-    icon: "/images/Pickup.png",
-  },
-];
+
 
 export default function HowItWorksSection() {
+  const { t } = useLanguage();
+  const steps = [
+    {
+      number: 1,
+      title: t("appControlStepTitle"),
+      description: t("appControlStepDesc"),
+      icon: "/images/shipment.png",
+    },
+    {
+      number: 2,
+      title: t("courierStepTitle"),
+      description: t("courierStepDesc"),
+      icon: "/images/Delivers.png",
+    },
+    {
+      number: 3,
+      title: t("trackingStepTitle"),
+      description: t("trackingStepDesc"),
+      icon: "/images/Receive.png",
+    },
+    {
+      number: 4,
+      title: t("scheduledPinStepTitle"),
+      description: t("scheduledPinStepTitle"),
+      icon: "/images/Pickup.png",
+    },
+  ];
   const fadeInUp = useMemo(
     () => ({
       hidden: { opacity: 0, y: 40 },
@@ -74,7 +73,7 @@ export default function HowItWorksSection() {
       <div className="container mx-auto px-4">
         <motion.div variants={fadeInUp} className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-            How Ahln. Works
+            {t("howItWorksTitle")}
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             A simple, streamlined process that makes package delivery and

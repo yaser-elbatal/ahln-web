@@ -12,7 +12,7 @@ const UnderlineText: React.FC<UnderlineTextProps> = ({ children }) => {
       <span className="relative">{children}</span>
       <span
         className={`mt-1 left-0 bottom-0 w-2/5 h-[4px] rounded-2xl `}
-        style={{ backgroundColor: COLORS.ACCENT }}
+        style={{ backgroundColor: COLORS.PRIMARY }}
       ></span>
     </span>
   );

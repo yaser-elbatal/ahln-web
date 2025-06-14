@@ -3,7 +3,26 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
+
+  /* Updated color scheme */
+  --color-primary: #5591ab;
+  --color-secondary: #5591ab;
+  --color-accent: #5591ab;
+
+  --color-light:"#ff6";
+
+  --color-first: #f8fafc;
+  --color-second: #f1f5f9;
+  --color-third: #ffffff;
+
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+
+  --text-color: #333333;
+  --bg-color: #ffffff;
+  --border-color: #e5e7eb;
 }
 
 @theme inline {
@@ -15,8 +34,16 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #ffff;
     --foreground: #ededed;
+
+    /* Dark mode colors */
+    --color-first: #0f172a;
+    --color-second: #1e293b;
+    --color-third: #0f172a;
+
+    --text-color: #f9fafb;
+    --bg-color: #ffff;
   }
 }
 
@@ -25,6 +52,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
 /* 1. Base Reset */
 *,
 *::before,
@@ -42,27 +70,8 @@ body {
   margin: 0;
   font-family: "Inter", sans-serif;
   line-height: 1.6;
-  background-color: #080f22; /* fallback in case gradient fails */
+  background-color: var(--bg-color); /* Updated to use variable */
   color: var(--text-color);
-}
-
-/* 2. Root Color Variables (used with Tailwind gradients too) */
-:root {
-  --color-primary: #0ea5e9;
-  --color-secondary: #06b6d4;
-  --color-accent: #3b82f6;
-
-  --color-first: #234079;
-  --color-second: #0f2044;
-  --color-third: #080f22;
-
-  --color-success: #10b981;
-  --color-error: #ef4444;
-  --color-warning: #f59e0b;
-
-  --text-color: #f9fafb;
-  --bg-color: #080f22;
-  --border-color: #e5e7eb;
 }
 
 /* 3. Font Smoothing */
@@ -76,6 +85,7 @@ body {
 .backface-hidden {
   backface-visibility: hidden;
 }
+
 /* 4. Utilities */
 .text-gradient {
   background-image: linear-gradient(
@@ -97,7 +107,7 @@ body {
 }
 
 .shadow-soft {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* 5. Scrollbar (optional) */
@@ -105,20 +115,20 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--border-color);
   border-radius: 4px;
 }
 
 @theme {
-  --color-primary: #0ea5e9;
-  --color-secondary: #01aee8;
-  --color-accent: #3b82f6;
-  --color-text: #111827;
+  --color-primary: #1976d2;
+  --color-secondary: #2196f3;
+  --color-accent: #42a5f5;
+  --color-text: #333333;
   --color-border: #e5e7eb;
-  --color-background: #f9fafb;
-  --color-hover-dark: #050b1e;
-  --color-hover-secondary: #01aee8;
-  --color-text-muted: #d1d5db;
+  --color-background: #ffffff;
+  --color-hover-dark: #0d47a1;
+  --color-hover-secondary: #1976d2;
+  --color-text-muted: #6b7280;
 }
 
 /* Custom scrollbar styles */
@@ -127,21 +137,21 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(25, 118, 210, 0.05);
   border-radius: 3px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(25, 118, 210, 0.2);
   border-radius: 3px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(25, 118, 210, 0.3);
 }
 
 .custom-swiper-pagination .swiper-pagination-bullet {
-  background-color: #ccc;
+  background-color: #333333;
   width: 10px;
   height: 10px;
   opacity: 1;
@@ -149,12 +159,12 @@ body {
 }
 
 .custom-swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #01aee8;
+  background-color: #5591ab;
   transform: scale(1.2);
 }
 
 span.swiper-pagination-bullet {
-  background-color: #01aee8;
+  background-color: #5591ab;
 }
 
 @layer utilities {
@@ -172,8 +182,4 @@ span.swiper-pagination-bullet {
       transform: scale(1);
     }
   }
-}
-
-span.swiper-pagination-bullet {
-  background-color: #01aee8;
 }

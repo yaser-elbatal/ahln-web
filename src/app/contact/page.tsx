@@ -1,67 +1,68 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ContactPage() {
+  const { t } = useLanguage();
   return (
-    <main className="min-h-screen bg-gradient-to-br from-[#0d1224] to-[#0d1224] text-white font-sans">
+    <main className="min-h-screen bg-background text-text font-sans">
       {/* Hero */}
-      <section className="py-20 text-center">
+      <section className="mt-20 text-center">
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold mb-4"
+          className="text-4xl font-bold mb-4 text-text"
         >
-          Get In Touch With Us
+          {t("contactPageTitle")}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg text-gray-300 max-w-xl mx-auto"
+          className="text-lg text-gray-600 max-w-xl mx-auto px-2"
         >
-          Whether you have a question, need support, or just want to say hello,
-          we’re here to help.
+          {t("contactPageSubtitle")}
         </motion.p>
       </section>
 
       {/* Info + Map */}
-      <section className="grid md:grid-cols-2 gap-12 px-6 py-16 max-w-6xl mx-auto">
+      <section className="grid md:grid-cols-2 gap-2 px-6 py-6 max-w-6xl mx-auto mt-4">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="space-y-6"
+          className="space-y-2"
         >
-          <h2 className="text-2xl font-semibold">Contact Information</h2>
-          <p className="text-gray-300">
-            Reach us anytime using the info below.
-          </p>
+          <h2 className="text-2xl font-semibold">
+            {t("contactInformation")}
+          </h2>
+          <p className="text-gray-600">{t("reachUs")}</p>
 
           <div>
-            <p className="font-medium">📞 Phone:</p>
-            <a href="tel:+971 4 269 3935" className="hover:text-white ml-2">
+            <p className="font-medium">📞 {t("phone")}:</p>
+            <a href="tel:+971 4 269 3935" className="hover:text-text ltr:ml-2 rtl:mr-2">
               +971 4 269 3935
             </a>
           </div>
 
           <div>
-            <p className="font-medium">📧 Email:</p>
-            <a href="mailto:info@dccme.ai" className="hover:text-white ml-2">
-              info@dccme.ai
+            <p className="font-medium">📧 {t("email")}:</p>
+            <a href="mailto:info@ahln.ae" className="hover:text-text ltr:ml-2 rtl:mr-2">
+              info@ahln.ae
             </a>
           </div>
 
           <div>
-            <p className="font-medium">📍 Address:</p>
+            <p className="font-medium">📍 {t("address")}</p>
             <a
               href="https://maps.app.goo.gl/CpW7NjNJEFdmNxgY6"
               target="_blank"
               rel="noopener noreferrer"
               className="block"
             >
-              32 Al Rasheed Rd - Al Mamzar , Dubai, United Arab Emirates
+              {t("address")}
             </a>
           </div>
         </motion.div>
@@ -83,7 +84,7 @@ export default function ContactPage() {
               height="450"
               allowFullScreen
               loading="lazy"
-              className="rounded-2xl shadow-lg border-4 border-[#1c2341] w-full h-[350px] pointer-events-none"
+              className="rounded-2xl shadow-lg border-4 border-[#c2c5d6] w-full h-[350px] pointer-events-none"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </a>
@@ -99,58 +100,56 @@ export default function ContactPage() {
           className="max-w-3xl mx-auto  p-8 rounded-2xl shadow-xl"
         >
           <h2 className="text-2xl font-semibold mb-6 text-center">
-            Send Us a Message
+            {t("sendUsMessage")}
           </h2>
           <form className="grid grid-cols-1 gap-6">
             <input
-              className=" bg-gray-700 border border-secondary px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+              className=" bg-background-700 border border-secondary px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
               type="text"
-              placeholder="Full Name"
+              placeholder={t("enterFullName")}
               required
             />
             <input
-              className=" bg-gray-700 border border-secondary px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+              className=" bg-background-700 border border-secondary px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
               type="email"
-              placeholder="Email Address"
+              placeholder={t("enterEmail")}
               required
             />
             <textarea
-              className=" bg-gray-700 border border-secondary px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+              className=" bg-background-700 border border-secondary px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
               rows={5}
-              placeholder="Your Message"
+              placeholder={t("yourMessage")}
               required
             ></textarea>
             <button
               type="submit"
               className="bg-secondary hover:bg-secondary text-white py-3 rounded-lg font-semibold transition focus:outline-none focus:ring-2 focus:ring-secondary"
             >
-              Send Message
+              {t("sendMessage")}
             </button>
           </form>
         </motion.div>
       </section>
 
       {/* Footer */}
-      <footer className="text-white py-12 text-center">
+      <footer className="text-text py-12 text-center">
         <motion.h3
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-xl mb-2"
         >
-          Stay Connected with Ahln.
+          {t("stayConnected")}
         </motion.h3>
-        <p className="text-gray-400 mb-6">
-          Subscribe for latest updates, demos & events
-        </p>
+        <p className="text-gray-400 mb-6">{t("subscribeForLatest")}</p>
 
         <div className="flex justify-center items-center">
           <input
-            className="p-3 px-4 rounded-l-lg  bg-gray-700  text-white border border-secondary focus:outline-none focus:ring-2 focus:ring-secondary"
-            placeholder="Enter your email"
+            className="p-3 px-4 rounded-l-lg  bg-background-700  text-text border border-secondary focus:outline-none focus:ring-2 focus:ring-secondary"
+            placeholder={t("enterEmail")}
           />
-          <button className="p-3 px-6 rounded-r-lg bg-secondary hover:bg-secondary">
-            Subscribe
+          <button className="p-3 px-6 rounded-r-lg bg-secondary hover:bg-secondary text-white">
+            {t("subscribeNow")}
           </button>
         </div>
 

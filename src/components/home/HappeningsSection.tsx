@@ -1,12 +1,11 @@
-/* eslint-disable react/no-unescaped-entities */
-
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import "swiper/css";
-
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
@@ -28,11 +27,6 @@ const events = [
     ],
   },
   {
-    images: [
-      "/images/Ai-ex1.jpeg",
-      "/images/Ai-ex2.jpeg",
-      "/images/Ai-ex3.jpeg",
-    ],
     id: 2,
     title: "Global AI Exhibition",
     date: "May 1–10, 2025",
@@ -40,45 +34,79 @@ const events = [
     description:
       "Discover how Ahln. Box leverages artificial intelligence to revolutionize package delivery. Join us at the Global AI Exhibition for an immersive experience.",
     videoUrl: "/videos/AI.MP4",
+    images: [
+      "/images/Ai-ex1.jpeg",
+      "/images/Ai-ex2.jpeg",
+      "/images/Ai-ex3.jpeg",
+    ],
+  },
+  {
+    id: 3,
+    title: "GITEX Berlin",
+    date: "May 21–23, 2025",
+    image: "/images/1GitexBerlin.jpg",
+    description:
+      "Experience Ahln. Box's cutting-edge delivery solutions at GITEX Berlin.",
+    videoUrl: "/videos/GITEXEurope.mp4",
+    images: [
+      "/images/1GitexBerlin.jpg",
+      "/images/2GitexBerlin.jpg",
+      "/images/3GitexBerlin.jpg",
+    ],
   },
 ];
 
 export default function LatestHappenings() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [hydrated, setHydrated] = useState(false);
 
-  // Close modal on Escape key press
+  const { t, lang } = useLanguage();
+  const isRTL = lang === "ar";
+
   useEffect(() => {
+    setHydrated(true);
+
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") setActiveVideo(null);
     };
+
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
+  if (!hydrated) return null;
+
   return (
-    <section
-      className={clsx(
-        "py-16 px-4 md:px-16 transition-colors duration-500",
-        "bg-[#080f22] text-white"
-      )}
-    >
+    <section className="py-16 px-4 md:px-16 bg-background text-text transition-colors duration-500">
       <div className="text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold mb-2">
-          Latest Happenings
-        </h2>
-        <p className="text-lg text-gray-400 dark:text-gray-300">
-          Stay updated with Ahln. Box's presence at major industry events and
-          exhibitions.
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: false, amount: 0.3 }}
+          className="text-4xl md:text-5xl font-bold text-text mb-6"
+        >
+          <span>{t("latestHappeningsPrefix")}</span>{" "}
+          <span className="text-primary">{t("latestHappeningsHighlight")}</span>
+        </motion.h2>
+        <p className="text-lg text-gray-600 dark:text-gray-600">
+          {t("latestHappeningsDesc")}
         </p>
       </div>
 
       <div className="relative w-full flex items-center justify-center">
-        <div className="custom-swiper-button-prev cursor-pointer text-secondary text-3xl absolute left-0 z-10 hidden sm:block">
-          ❮
+        <div
+          className={clsx(
+            "custom-swiper-button-prev cursor-pointer text-primary text-3xl absolute z-10 hidden sm:block",
+            isRTL ? "right-0" : "left-0"
+          )}
+        >
+          {isRTL ? "❮" : "❮"}
         </div>
 
         <div className="w-full max-w-[1400px] overflow-hidden flex justify-center">
           <Swiper
+            key={isRTL.toString()} // force re-render on direction change
             modules={[Pagination, Navigation, Autoplay]}
             autoplay={{ delay: 10000, disableOnInteraction: false }}
             pagination={{
@@ -89,21 +117,11 @@ export default function LatestHappenings() {
               nextEl: ".custom-swiper-button-next",
               prevEl: ".custom-swiper-button-prev",
             }}
-            centeredSlides={true}
+            centeredSlides
             spaceBetween={20}
-            loop={true}
+            loop
             slidesPerView={1}
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-              },
-              768: {
-                slidesPerView: 1,
-              },
-              1024: {
-                slidesPerView: 1,
-              },
-            }}
+            dir={isRTL ? "rtl" : "ltr"}
           >
             {events.map((event) => (
               <SwiperSlide key={event.id}>
@@ -112,49 +130,55 @@ export default function LatestHappenings() {
                     onClick={() =>
                       setActiveVideo(`${event.videoUrl}?autoplay=1`)
                     }
-                    className="cursor-pointer bg-[#10182b] text-white rounded-xl shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 w-full max-w-[900px]"
+                    className="cursor-pointer bg-primary text-white rounded-xl shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 w-full max-w-[900px]"
                   >
-                    {/* Nested Swiper for Images */}
-                    <div className="relative w-full h-[400px] bg-black rounded-t-xl overflow-hidden">
+                    <div className="relative w-full bg-black rounded-t-xl overflow-hidden aspect-[16/9]">
                       <Swiper
+                        key={`${event.id}-images-${isRTL}`} // rerender inner Swiper
                         modules={[Pagination, Autoplay]}
                         pagination={{ clickable: true }}
-                        autoplay={{
-                          delay: 3000,
-                          disableOnInteraction: false,
-                        }}
+                        autoplay={{ delay: 3000, disableOnInteraction: false }}
                         spaceBetween={10}
                         slidesPerView={1}
                         className="h-full w-full"
                       >
                         {event.images.map((src, index) => (
-                          <SwiperSlide
-                            key={index}
-                            className="flex items-center justify-center h-full"
-                          >
-                            <Image
-                              src={src}
-                              alt={`Slide ${index + 1}`}
-                              fill
-                              sizes="(max-width: 900px) 100vw, 900px"
-                              className="rounded-t-xl object-cover"
-                            />
+                          <SwiperSlide key={index}>
+                            <div className="relative w-full h-full">
+                              <Image
+                                src="/images/logoLight.png"
+                                alt="Logo Background"
+                                fill
+                                style={{
+                                  objectFit: "contain",
+                                  opacity: 0.08,
+                                  pointerEvents: "none",
+                                }}
+                                className="z-0"
+                                priority
+                              />
+                              <Image
+                                src={src}
+                                alt={`Slide ${index + 1}`}
+                                fill
+                                style={{ objectFit: "contain" }}
+                                className="rounded-t-xl z-10 relative"
+                                priority
+                              />
+                            </div>
                           </SwiperSlide>
                         ))}
                       </Swiper>
                     </div>
 
-                    {/* Card Content */}
-                    <div className="p-4 flex flex-col">
-                      <p className="text-sm text-secondary mb-1">
-                        📅 {event.date}
-                      </p>
+                    <div className="p-4">
+                      <p className="text-sm text-white mb-1">📅 {event.date}</p>
                       <h3 className="text-lg font-bold mb-1">{event.title}</h3>
-                      <p className="text-sm text-gray-300 mb-2">
+                      <p className="text-sm text-white mb-2">
                         {event.description}
                       </p>
-                      <span className="text-secondary hover:underline text-sm inline-flex items-center gap-1">
-                        Watch Video →
+                      <span className="text-text hover:underline text-sm inline-flex items-center gap-1">
+                        {"Watch Video →"}
                       </span>
                     </div>
                   </div>
@@ -164,8 +188,13 @@ export default function LatestHappenings() {
           </Swiper>
         </div>
 
-        <div className="custom-swiper-button-next cursor-pointer text-secondary text-3xl absolute right-0 z-10 hidden sm:block">
-          ❯
+        <div
+          className={clsx(
+            "custom-swiper-button-next cursor-pointer text-secondary text-3xl absolute z-10 hidden sm:block",
+            isRTL ? "left-0" : "right-0"
+          )}
+        >
+          {isRTL ? "❯" : "❯"}
         </div>
       </div>
 

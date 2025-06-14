@@ -49,7 +49,7 @@ export default function VideoCard({
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
       <div className="absolute top-0 left-0 right-0 p-4 flex justify-center items-center bg-black/80">
         <h3 className="text-4xl font-semibold text-white">
-          {title} <span className="text-cyan-400">{highlight}</span> Ahln.
+          {title} <span className="text-primary">{highlight}</span> Ahln.
         </h3>
       </div>
       <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-end items-center">
@@ -62,7 +62,7 @@ export default function VideoCard({
           </button>
           <button
             onClick={handlePlayPause}
-            className="w-10 h-10 rounded-full bg-cyan-400 flex items-center justify-center text-black hover:bg-cyan-300 transition-colors"
+            className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-black hover:bg-cyan-300 transition-colors"
           >
             {isPlaying ? <Pause size={18} /> : <Play size={18} />}
           </button>

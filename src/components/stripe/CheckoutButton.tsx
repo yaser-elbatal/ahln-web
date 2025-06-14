@@ -1,4 +1,6 @@
 // components/CheckoutButton.tsx
+
+import { useLanguage } from "@/context/LanguageContext";
 import { getStripe } from "@/utils/stripe";
 import { useState } from "react";
 import { COLORS } from "../layout/colors";
@@ -21,6 +23,9 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
   metadata,
 }) => {
   const [loading, setLoading] = useState(false);
+  const { t } = useLanguage();
+
+  const paymentMethod = metadata?.paymentMethod as string;
 
   const handleCheckout = async () => {
     setLoading(true);
@@ -30,14 +35,13 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
       quantity,
     }));
 
-    console.log("stripeItems", stripeItems);
-
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/stripe/create-session`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "any-value",
         },
         body: JSON.stringify({ items: stripeItems, metadata }),
       }
@@ -51,27 +55,38 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
 
   const disableButton = loading || selectedItems.length === 0 || disabled;
 
+  const totalAmount = selectedItems.reduce(
+    (total, item) => total + (item.amount || 0) * item.quantity,
+    0
+  );
+
+  const getLabelByPayment = () => {
+    switch (paymentMethod) {
+      case "tamara":
+        return `${t("payWithTabby")}
+       `;
+      case "deposit":
+        return `${t("depositPayment")} (${t("AED")} ${1000})`;
+      case "card":
+      default:
+        return `${t("PlaceOrder")} (${t(
+          "AED"
+        )} ${totalAmount.toLocaleString()})`;
+    }
+  };
+
   return (
     <div className="relative">
       <button
         onClick={handleCheckout}
-        className="mt-6 mb-2 w-full hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-300 flex items-center justify-center space-x-2"
+        className="mt-2 mb-1 w-full text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-300 flex items-center justify-center space-x-2"
         style={{
-          backgroundColor: disableButton ? COLORS.DISABLED : COLORS.ACCENT,
+          backgroundColor: disableButton ? COLORS.DISABLED : COLORS.PRIMARY,
           cursor: disableButton ? "not-allowed" : "pointer",
         }}
         disabled={disableButton}
       >
-        <span>
-          {loading
-            ? "Redirecting..."
-            : `Place Order (AED ${selectedItems
-                .reduce(
-                  (total, item) => total + (item.amount || 0) * item.quantity,
-                  0
-                )
-                .toLocaleString()})`}
-        </span>
+        <span>{loading ? t("Redirecting") : getLabelByPayment()}</span>
         <svg
           className="w-5 h-5"
           fill="none"
@@ -86,9 +101,14 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
           />
         </svg>
       </button>
+      {paymentMethod == "deposit" && (
+        <div className=" top-full  text-gray-1000">{t("payWithDebos")}</div>
+      )}
+      {/* Show error if no color is selected */}
+
       {disableButton && (
-        <div className="absolute top-full text-sm text-red-500">
-          Please select color
+        <div className="absolute top-full text-sm text-red-500 mb-1.5">
+          {t("PleaseSelectColor")}
         </div>
       )}
     </div>

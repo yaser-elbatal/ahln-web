@@ -25,7 +25,7 @@ export default function BoxViewer({ BoxType }: BoxViewerProps) {
 
     // Scene setup
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color("#DCDFE5");
+    scene.background = new THREE.Color("#E6EEF2");
     sceneRef.current = scene;
 
     // Camera setup

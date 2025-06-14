@@ -1,66 +1,63 @@
 import { Product } from "./ProductsPage";
 
-export const products: Product[] = [
+type BaseProduct = Omit<
+  Product,
+  "name" | "description" | "tags" | "comes" | "specifications"
+> & {
+  nameKey: string;
+  descriptionKey: string;
+  tagKeys: string[];
+  comesKeys?: string[];
+  specifications: { labelKey: string; value: string }[];
+  payments: string[];
+};
+
+const baseProducts: BaseProduct[] = [
   {
     id: 1,
-    name: "Ahln. Max",
+    nameKey: "productMaxName",
     model: "max",
     status: true,
     price: 8900,
     image: "/images/max.png",
     bannerImage: "/images/ahln-max.jpg",
-    bannerImageMobile: "/images/max-mobilebanner.jpg",
-    stripePriceId: "price_1RPMW5DHoZtoEuq1MOQdfBKc",
-    description:
-      "Our flagship smart delivery box, perfect for businesses and multi-unit buildings. Features advanced security systems and larger storage capacity.",
-    tags: ["Large Capacity", "Advanced Security", "Multi-unit"],
+    bannerImageMobile: "/images/max-mobilebanner.png",
+    stripePriceId:
+      process.env.NODE_ENV === "development"
+        ? "price_1RMk8UDHoZtoEuq1FtGXdTmr"
+        : "price_1RQTgw04jNAuzfPHErEV1A9S",
+
+    descriptionKey: "productMaxDescription",
+    comesKeys: [
+      "tagFreeDeliveryInstallation",
+      "tagTwoYearWarranty",
+      "tagOneYearService",
+    ],
+    tagKeys: [
+      "tagFreeDeliveryInstallation",
+      "tagTwoYearWarranty",
+      "tagOneYearService",
+      "tagLargeCapacity",
+      "tagAdvancedSecurity",
+      "tagMultiUnit",
+    ],
+
     specifications: [
-      { label: "Material", value: "Stainless steel" },
-      { label: "Weight", value: "163 Kg" },
-      { label: "Operating voltage", value: "220 Volts (AC)" },
-      { label: "Power Consumption", value: "75 Watts" },
+      { labelKey: "specMaterial", value: "Stainless steel" },
+      { labelKey: "specWeight", value: "163 Kg" },
+      { labelKey: "specOperatingVoltage", value: "220 Volts (AC)" },
+      { labelKey: "specPowerConsumption", value: "75 Watts" },
       {
-        label: "Installation type",
+        labelKey: "specInstallationType",
         value: "Wall Mount, Floor Standing and Wall Insert",
       },
-      { label: "Operating System", value: "Android" },
-      { label: "Touchscreen Size", value: "7.2 Inch" },
-      { label: "Capacity", value: "173,246,440 litres" },
-      { label: "Dimensions", value: "100 x 65 x 190 cm" },
-      { label: "Network", value: "Communication Ethernet & WiFi" },
+      { labelKey: "specOperatingSystem", value: "Android" },
+      { labelKey: "specTouchscreenSize", value: "7.2 Inch" },
+      { labelKey: "specCapacity", value: "173,246,440 litres" },
+      { labelKey: "specDimensions", value: "100 x 65 x 190 cm" },
+      { labelKey: "specNetwork", value: "Communication Ethernet & WiFi" },
     ],
-    accessories: [
-      {
-        id: "camera",
-        label: "Camera",
-        value: "HD surveillance with night vision",
-        price: 500,
-        priceId: "price_1RMmCPDHoZtoEuq1jjxFX4DL",
-        description:
-          "Advanced security camera with night vision and motion detection for package monitoring.",
-        image: "/images/cameraAccessory.jpg",
-      },
-      {
-        id: "refrigerator",
-        label: "Refrigeration Unit",
-        value: "Temperature-controlled storage",
-        price: 1000,
-        priceId: "price_1RMmCfDHoZtoEuq1XE4MAqIM",
-        description:
-          "Built-in refrigeration system to keep temperature-sensitive items fresh and cold.",
-        image: "/images/refrigerator.jpg",
-      },
-      {
-        id: "weight-sensor",
-        label: "Weight Sensor",
-        value: "Package detection system",
-        price: 200,
-        priceId: "price_1RMmD0DHoZtoEuq1gboGIJFK",
-        description:
-          "Precise weight sensing technology to detect and confirm package deliveries.",
-        image: "/images/weightsensor.jpg",
-      },
-    ],
+    accessories: [],
     carouselImages: [
       "/images/image1.jpg",
       "/images/image2.jpg",
@@ -74,6 +71,8 @@ export const products: Product[] = [
       pebblegrey: "/images/pebblegrey.png",
       bluegrey: "/images/bluegrey.png",
     },
+    payments: ["depositPayment", "tamaraPayment", "cardPayment"],
+
     colorImages: [
       {
         name: "Blue Grey",
@@ -97,7 +96,7 @@ export const products: Product[] = [
   },
   {
     id: 2,
-    name: "Ahln. Mini",
+    nameKey: "productMiniName",
     model: "mini",
     status: false,
     price: 5900,
@@ -105,24 +104,34 @@ export const products: Product[] = [
     bannerImage: "/images/ahln-mini.jpg",
     bannerImageMobile: "/images/mini-mobilebanner.jpg",
     stripePriceId: "price_1RMk8UDHoZtoEuq1FtGXdTmr",
-    description:
-      "Compact and efficient, designed for residential use. Perfect for homes and small businesses requiring secure package delivery.",
-    tags: ["Compact", "Residential", "Easy Setup"],
+    descriptionKey: "productMiniDescription",
+    tagKeys: [
+      "tagCompact",
+      "tagResidential",
+      "tagEasySetup",
+      "tagFreeDeliveryInstallation",
+      "tagTwoYearWarranty",
+      "tagOneYearService",
+      "tagAdvancedSecurity",
+      "tagMultiUnit",
+    ],
     specifications: [
-      { label: "Material", value: "Stainless steel" },
-      { label: "Weight", value: "163 Kg" },
-      { label: "Operating voltage", value: "220 Volts (AC)" },
-      { label: "Power Consumption", value: "75 Watts" },
+      { labelKey: "specMaterial", value: "Stainless steel" },
+      { labelKey: "specWeight", value: "163 Kg" },
+      { labelKey: "specOperatingVoltage", value: "220 Volts (AC)" },
+      { labelKey: "specPowerConsumption", value: "75 Watts" },
       {
-        label: "Installation type",
+        labelKey: "specInstallationType",
         value: "Wall Mount, Floor Standing and Wall Insert",
       },
-      { label: "Operating System", value: "Android" },
-      { label: "Touchscreen Size", value: "7.2 Inch" },
-      { label: "Capacity", value: "173,246,440 litres" },
-      { label: "Dimensions", value: "100 x 65 x 190 cm" },
-      { label: "Network", value: "Communication Ethernet & WiFi" },
+      { labelKey: "specOperatingSystem", value: "Android" },
+      { labelKey: "specTouchscreenSize", value: "7.2 Inch" },
+      { labelKey: "specCapacity", value: "173,246,440 litres" },
+      { labelKey: "specDimensions", value: "100 x 65 x 190 cm" },
+      { labelKey: "specNetwork", value: "Communication Ethernet & WiFi" },
     ],
+    payments: ["depositPayment", "tamaraPayment", "cardPayment"],
+
     accessories: [],
     carouselImages: [
       "/images/mini1.jpg",
@@ -156,3 +165,48 @@ export const products: Product[] = [
     ],
   },
 ];
+
+export function getProducts(): Product[] {
+  return baseProducts.map((p) => ({
+    ...p,
+    name: p.nameKey,
+    description: p.descriptionKey,
+    tags: p.tagKeys,
+    comes: p.comesKeys,
+    specifications: p.specifications.map((s) => ({
+      label: s.labelKey,
+      value: s.value,
+    })),
+  }));
+}
+
+// {
+//   id: "camera",
+//   label: "Camera",
+//   value: "HD surveillance with night vision",
+//   price: 500,
+//   priceId: "price_1RMmCPDHoZtoEuq1jjxFX4DL",
+//   description:
+//     "Advanced security camera with night vision and motion detection for package monitoring.",
+//   image: "/images/cameraAccessory.jpg",
+// },
+// {
+//   id: "refrigerator",
+//   label: "Refrigeration Unit",
+//   value: "Temperature-controlled storage",
+//   price: 1000,
+//   priceId: "price_1RMmCfDHoZtoEuq1XE4MAqIM",
+//   description:
+//     "Built-in refrigeration system to keep temperature-sensitive items fresh and cold.",
+//   image: "/images/refrigerator.jpg",
+// },
+// {
+//   id: "weight-sensor",
+//   label: "Weight Sensor",
+//   value: "Package detection system",
+//   price: 200,
+//   priceId: "price_1RMmD0DHoZtoEuq1gboGIJFK",
+//   description:
+//     "Precise weight sensing technology to detect and confirm package deliveries.",
+//   image: "/images/weightsensor.jpg",
+// },

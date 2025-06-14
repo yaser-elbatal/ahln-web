@@ -1,5 +1,5 @@
 export const COLORS = {
-  PRIMARY: "#0ea5e9", // Cyan
+  PRIMARY: "#5591ab", // Cyan
   SECONDARY: "#06b6d4", // Teal
   ACCENT: "#3b82f6", // Blue
   BACKGROUND: "#f9fafb", // Light Gray

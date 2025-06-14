@@ -21,8 +21,8 @@ export default function FeatureItem({
         />
       </div>
       <div>
-        <h4 className="font-semibold text-blue-200 mb-1">{title}</h4>
-        <p className="text-gray-300 text-sm leading-snug">{desc}</p>
+        <h4 className="font-bold text-primary mb-1">{title}</h4>
+        <p className="text-text text-sm leading-snug">{desc}</p>
       </div>
     </div>
   );

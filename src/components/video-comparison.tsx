@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import VideoCard from "./ui/VideoCard";
 
@@ -12,6 +13,7 @@ export default function VideoComparison({
   beforeVideoSrc,
   afterVideoSrc,
 }: VideoComparisonProps) {
+  const { t } = useLanguage();
   return (
     <div className="grid md:grid-cols-2 gap-8 max-h-max">
       {/* Before Video */}
@@ -25,8 +27,8 @@ export default function VideoComparison({
           id="before-video"
           videoSrc={beforeVideoSrc}
           posterSrc="/images/beforeAhln.jpg"
-          title="Life"
-          highlight="before"
+          title={t("Life")}
+          highlight={t("before")}
         />
       </motion.div>
 
@@ -41,8 +43,8 @@ export default function VideoComparison({
           id="after-video"
           videoSrc={afterVideoSrc}
           posterSrc="/images/afterAhln.jpg"
-          title="Life"
-          highlight="with"
+          title={t("Life")}
+          highlight={t("with")}
         />
       </motion.div>
     </div>
