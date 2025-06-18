@@ -10,6 +10,7 @@ type BaseProduct = Omit<
   comesKeys?: string[];
   specifications: { labelKey: string; value: string }[];
   payments: string[];
+  depositPriceId: string;
 };
 
 const baseProducts: BaseProduct[] = [
@@ -26,7 +27,7 @@ const baseProducts: BaseProduct[] = [
       process.env.NODE_ENV === "development"
         ? "price_1RMk8UDHoZtoEuq1FtGXdTmr"
         : "price_1RQTgw04jNAuzfPHErEV1A9S",
-
+    depositPriceId: "price_1RZrht04jNAuzfPH1voWpMH7",
     descriptionKey: "productMaxDescription",
     comesKeys: [
       "tagFreeDeliveryInstallation",
@@ -43,7 +44,10 @@ const baseProducts: BaseProduct[] = [
     ],
 
     specifications: [
-      { labelKey: "specMaterial", value: "Stainless steel" },
+      {
+        labelKey: "specMaterial",
+        value: "Galvanized Steel with Double Powder Coated Paint (IP65)",
+      },
       { labelKey: "specWeight", value: "163 Kg" },
       { labelKey: "specOperatingVoltage", value: "220 Volts (AC)" },
       { labelKey: "specPowerConsumption", value: "75 Watts" },
@@ -104,6 +108,7 @@ const baseProducts: BaseProduct[] = [
     bannerImage: "/images/ahln-mini.jpg",
     bannerImageMobile: "/images/mini-mobilebanner.jpg",
     stripePriceId: "price_1RMk8UDHoZtoEuq1FtGXdTmr",
+    depositPriceId: "price_1RZrht04jNAuzfPH1voWpMH7",
     descriptionKey: "productMiniDescription",
     tagKeys: [
       "tagCompact",

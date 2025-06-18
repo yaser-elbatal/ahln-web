@@ -244,10 +244,11 @@ export default function Home() {
             className="text-4xl md:text-5xl font-bold text-text text-center mb-16"
           >
             <span className="text-text">
-              {lang == "ar" ? t("beforAndAfter") : t("experiencePrefix")}
+              {t("differYesterdayToday")}
+              {/* {lang == "ar" ? t("beforAndAfter") : t("experiencePrefix")} */}
             </span>{" "}
             <span className="text-primary">
-              {lang == "ar" ? t("whatIsHighlight") : t("experienceHighlight")}
+              {/* {lang == "ar" ? t("whatIsHighlight") : t("experienceHighlight")} */}
             </span>
           </motion.h2>
 

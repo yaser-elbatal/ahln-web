@@ -208,16 +208,16 @@ const translations: Record<Language, Record<string, string>> = {
     faq1Question: "What is Ahln?",
     faq1Answer:
       "Ahln is a smart delivery box developed by Dub Dev Technologies that provides a secure, autonomous, and high-tech solution for receiving parcels at home or office.",
-    faq2Question: "How does Ahln work?",
+    faq2Question: "How does work?",
     faq2Answer:
       "Ahln operates autonomously, using scheduled delivery windows, real-time video monitoring, and a mobile app to manage parcel drop-offs — even when you're not home.",
-    faq3Question: "Is the Ahln Box secure?",
+    faq3Question: "Is the  Box secure?",
     faq3Answer:
       "Yes. Ahln features AI-enabled live video monitoring, secure cloud storage for video footage, anti-tamper electronic locks, 2FA and OTP-based mobile access, and physical backup keys.",
-    faq4Question: "Can I manage Ahln remotely?",
+    faq4Question: "Can I manage the Box remotely?",
     faq4Answer:
       "Absolutely. The Ahln mobile app allows you to manage multiple devices, share access with family or guests, receive real-time delivery notifications, and adjust security and scheduling settings.",
-    faq5Question: "What types of deliveries does Ahln support?",
+    faq5Question: "What types of deliveries does it support?",
     faq5Answer:
       "Ahln supports major courier services such as Amazon and Talabat. You can input tracking numbers and receive packages contactlessly.",
     faq6Question: "What happens if the internet goes down?",
@@ -265,6 +265,7 @@ const translations: Record<Language, Record<string, string>> = {
     SelectPaymentMethod: "Select Payment Method",
     payWithTabby: "Pay with tabby",
     payWithDebos: "Place your order now, pay the rest later after installation",
+    differYesterdayToday: "The difference between yesterday and today",
   },
   ar: {
     home: "الرئيسية",
@@ -286,15 +287,15 @@ const translations: Record<Language, Record<string, string>> = {
     cookiePolicy: "سياسة الكوكيز",
     heroSubtitle: "توصيل ذكي وآمن",
     heroDescription:
-      "بوكس ذكي عند بابك يستلم الطلبات نيابة عنك، بأحدث التقنيات وأعلى درجات الأمان.",
+      "استقبل طلباتك من أي متجر عبر صندوق ذكي عند باب منزلك، مزوّد بأحدث التقنيات ومعايير اﻷمان العالية.",
     security: "الأمان",
-    appControl: "تحكم عبر التطبيق",
+    appControl: "تحكم ذكي بالتطبيق",
 
-    liveStream: "البث مباشر",
+    liveStream: "مراقبة بالبث المباشر",
     orderNow: "اطلب الآن",
     powerfulAppTitle: "تطبيق قوي",
     powerfulAppDesc:
-      "تحكم في كل شيء من تطبيقنا الملئ بالمميزات والمصمم لتجربة مستخدم سلسة.",
+      "تحكم بكل تفاصيلك عبر تطبيقنا الغني بالمزايا، والمصمم خصيصا ليمنحك تجربة استخدام سهلة وسلسة",
     featureMobileTitle: "التحكم عبر التطبيق",
     featureMobileDesc: "تمكين التحكم عبر تطبيق Ahln.",
     featureLivestreamTitle: "إمكانية البث المباشر",
@@ -341,7 +342,7 @@ const translations: Record<Language, Record<string, string>> = {
     seamlessProcessPrefix: "عملية تسليم",
     seamlessProcessHighlight: "سلسة",
     powerfulAppPrefix: "تطبيق",
-    powerfulAppHighlight: "قوي",
+    powerfulAppHighlight: "شامل",
     latestHappeningsPrefix: "أحدث",
     latestHappeningsHighlight: "الفعاليات",
     controlSectionDesc:
@@ -370,8 +371,7 @@ const translations: Record<Language, Record<string, string>> = {
       "سجّل رقم التتبع الخاص بطلبك ليفتح الباب تلقائياً عند مسح المندوب لرقم التتبع.",
     processStep4Title: "رمز سري",
     processStep4Desc: "اضبط رمزاً متكرراً للمناديب وتلقى إشعاراً عند كل تسليم.",
-    latestHappeningsDesc:
-      "ابق على اطلاع بحضور Ahln.  في أبرز الأحداث والمعارض .",
+    latestHappeningsDesc: "ابقي َ علي اطﻼع بحضورنا في أبرز اﻷحداث والمعارض",
     watchVideo: "مشاهدة الفيديو →",
     marketingConsent:
       "أوافق على تلقي الاتصالات التسويقية وأوافق على سياسة الخصوصية الخاصة بـ Ahln. ",
@@ -456,13 +456,13 @@ const translations: Record<Language, Record<string, string>> = {
     faq1Question: "ما هو Ahln.?",
     faq1Answer:
       "Ahln هو صندوق توصيل ذكي طورته Dub Dev Technologies لتوفير حل آمن وذاتي عالي التقنية لاستلام الطلبات في المنزل أو المكتب.",
-    faq2Question: "كيف يعمل Ahln.?",
+    faq2Question: "كيف يعمل ?",
     faq2Answer:
       "يعمل Ahln بشكل مستقل، باستخدام جداول تسليم ومراقبة فيديو مباشرة وتطبيق جوال لإدارة عمليات التسليم حتى في غيابك.",
-    faq3Question: "هل صندوق Ahln آمن؟",
+    faq3Question: "هل صندوق آمن؟",
     faq3Answer:
       "نعم، يتميز Ahln بمراقبة فيديو مدعومة بالذكاء الاصطناعي وتخزين سحابي آمن للأشرطة الإلكترونية وأقفال إلكترونية مقاومة للعبث و2FA وOTP ومفاتيح بديلة فعلية.",
-    faq4Question: "هل يمكنني إدارة Ahln عن بُعد؟",
+    faq4Question: "هل يمكنني إدارة الصندوق عن بُعد؟",
     faq4Answer:
       "بالتأكيد، يتيح لك تطبيق Ahln إدارة عدة أجهزة ومشاركة الوصول مع العائلة أو الضيوف وتلقي إشعارات التسليم الفورية وضبط إعدادات الأمان والجدولة.",
     faq5Question: "ما أنواع عمليات التسليم التي يدعمها Ahln؟",
@@ -474,7 +474,7 @@ const translations: Record<Language, Record<string, string>> = {
     faq7Question: "هل يمكن للضيوف أو أفراد العائلة استخدام الصندوق؟",
     faq7Answer:
       "نعم، يمكنك إضافة مستخدمين ضيوف ومشاركة الوصول مع أفراد العائلة عبر التطبيق.",
-    faq8Question: "ما هي أبعاد صندوق Ahln؟",
+    faq8Question: "ما هي أبعاد الصندوق ؟",
     faq8Answer:
       "يبلغ التصميم الخارجي تقريباً: الارتفاع 190 سم، العرض 100 سم، العمق 65 سم، ويتضمن ثلاث حجرات بأحجام مختلفة لتناسب أنواع الطلبات المتنوعة.",
     faq9Question: "ما المواد المصنوع منها الصندوق؟",
@@ -483,7 +483,7 @@ const translations: Record<Language, Record<string, string>> = {
     faq10Question: "هل الجهاز مقاوم للعوامل الجوية؟",
     faq10Answer:
       "نعم، يضمن تصنيف IP65 مقاومة الصندوق للماء والغبار مما يجعله مناسباً للاستخدام الخارجي.",
-    faq11Question: "ما نوع الاتصال الذي يستخدمه Ahln؟",
+    faq11Question: "ما نوع الاتصال الذي يستخدمه الصندوق",
     faq11Answer:
       "يدعم الاتصال عبر الإيثرنت والواي فاي لضمان التشغيل والتواصل السلس.",
     faq12Question: "ما مصدر الطاقة المطلوب؟",
@@ -497,7 +497,7 @@ const translations: Record<Language, Record<string, string>> = {
     faq15Question: "هل يوفر Ahln دعماً للعملاء؟",
     faq15Answer:
       "نعم، يتوفر دعم فني مباشر عبر الدردشة من خلال التطبيق لتقديم المساعدة السريعة.",
-    Security: "آمــــــن",
+    Security: "أمان متكامل",
     AppControl: "التحكم عبر التطبيق",
     beforAndAfter: " قبل وبعد",
     Life: "الحياة",
@@ -513,6 +513,7 @@ const translations: Record<Language, Record<string, string>> = {
     SelectPaymentMethod: "اختر طريقة الدفع",
     payWithTabby: "ادفع مع تابي",
     payWithDebos: "اطلب الحين والباقي بعد التركيب",
+    differYesterdayToday: "الفرق بين اﻷمس واليوم",
   },
 };
 

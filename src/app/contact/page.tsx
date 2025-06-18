@@ -35,21 +35,22 @@ export default function ContactPage() {
           transition={{ duration: 0.6 }}
           className="space-y-2"
         >
-          <h2 className="text-2xl font-semibold">
-            {t("contactInformation")}
-          </h2>
+          <h2 className="text-2xl font-semibold">{t("contactInformation")}</h2>
           <p className="text-gray-600">{t("reachUs")}</p>
 
           <div>
             <p className="font-medium">📞 {t("phone")}:</p>
-            <a href="tel:+971 4 269 3935" className="hover:text-text ltr:ml-2 rtl:mr-2">
-              +971 4 269 3935
+            <a href="tel: +971 52 288 0118" className="text-text ml-2">
+              +971 52 288 0118
             </a>
           </div>
 
           <div>
             <p className="font-medium">📧 {t("email")}:</p>
-            <a href="mailto:info@ahln.ae" className="hover:text-text ltr:ml-2 rtl:mr-2">
+            <a
+              href="mailto:info@ahln.ae"
+              className="hover:text-text ltr:ml-2 rtl:mr-2"
+            >
               info@ahln.ae
             </a>
           </div>

@@ -105,11 +105,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <img src="/icons/call.svg" alt="call" width={20} height={20} />
-                <a
-                  href="tel:+971 4 269 3935"
-                  className="text-text ltr:ml-2 rtl:mr-2"
-                >
-                  +971 4 269 3935
+                <a href="tel: +971 52 288 0118" className="text-text ml-2">
+                  +971 52 288 0118
                 </a>
               </li>
               <li className="flex items-center">

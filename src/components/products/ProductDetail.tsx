@@ -501,7 +501,10 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                     <CheckoutButton
                       selectedItems={[
                         {
-                          price: productInfo?.stripePriceId || "",
+                          price:
+                            (paymentMethod === "deposit"
+                              ? productInfo?.depositPriceId
+                              : productInfo?.stripePriceId) || "",
                           quantity: 1,
                           amount: productInfo?.price || 0,
                         },

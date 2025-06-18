@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 
 export const paymentOptions = [
   { value: "card", label: "cardPayment" },
-  { value: "tamara", label: "tamaraPayment" },
+  // { value: "tamara", label: "tamaraPayment" },
   { value: "deposit", label: "depositPayment" },
 ];
 

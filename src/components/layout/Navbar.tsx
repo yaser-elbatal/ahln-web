@@ -122,7 +122,7 @@ export default function Navbar() {
                 role="menu"
               >
                 <a
-                  href="/ahln_Brochure.pdf"
+                  href="/Ahln Max Brochure.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block px-4 py-2 text-sm text-text hover:bg-gray-100"
@@ -130,7 +130,7 @@ export default function Navbar() {
                 >
                   Ahln Max
                 </a>
-                <a
+                {/* <a
                   href="/broucher-mini.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -138,7 +138,7 @@ export default function Navbar() {
                   role="menuitem"
                 >
                   Ahln Mini
-                </a>
+                </a> */}
               </div>
             )}
           </div>
@@ -227,7 +227,7 @@ export default function Navbar() {
           {showBrochureOptions && (
             <div className="mt-4 space-y-3 w-full">
               <a
-                href="/ahln_Brochure.pdf"
+                href="/Ahln Max Brochure.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-secondary border border-secondary px-6 py-2 rounded-md hover:bg-secondary hover:text-[#050b1e] transition-colors"

@@ -56,6 +56,7 @@ export type Product = {
   }[];
   comes?: string[];
   payments: string[];
+  depositPriceId?: string;
 };
 
 // Product Card Component
