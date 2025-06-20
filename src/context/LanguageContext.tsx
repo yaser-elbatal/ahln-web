@@ -264,8 +264,6 @@ const translations: Record<Language, Record<string, string>> = {
     cardPayment: "💳 Credit/Debit Card",
     SelectPaymentMethod: "Select Payment Method",
     payWithTabby: "Pay with tabby",
-    payWithDebos: "Place your order now, pay the rest later after installation",
-    differYesterdayToday: "The difference between yesterday and today",
 
     payWithDeposit:
       "Place your order now, pay the rest later after installation",
