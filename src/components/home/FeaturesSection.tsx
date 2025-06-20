@@ -163,9 +163,7 @@ export default function FeaturesSection() {
           </div>
         ) : (
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <RotatingBox
-              imageSrc={hoveredImage ?? "/images/powerful-app.png"}
-            />
+            <RotatingBox imageSrc={hoveredImage!} />
             <ul className="space-y-6">
               {features.map((feature, index) => (
                 <motion.li
