@@ -42,7 +42,7 @@ const baseFeatures = [
   {
     icon: "/icons/deviceShare.svg",
     titleKey: "featureSharingTitle",
-    descKey: "featureSharingDesc",
+    descKey: "controlFeature3",
     image: "/images/mobileScreen4.png",
   },
 ];

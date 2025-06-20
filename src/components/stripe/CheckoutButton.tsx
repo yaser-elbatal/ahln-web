@@ -1,5 +1,4 @@
 // components/CheckoutButton.tsx
-
 import { useLanguage } from "@/context/LanguageContext";
 import { getStripe } from "@/utils/stripe";
 import { useState } from "react";
@@ -25,7 +24,6 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
   stock = 0,
 }) => {
   const [loading, setLoading] = useState(false);
-  const { t } = useLanguage();
 
   const paymentMethod = metadata?.paymentMethod as string;
 
@@ -54,7 +52,7 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
     const stripe = await getStripe();
     await stripe?.redirectToCheckout({ sessionId });
   };
-
+  const { t, lang } = useLanguage();
   const disableButton = loading || selectedItems.length === 0 || disabled;
 
   const totalAmount = selectedItems.reduce(
@@ -104,7 +102,7 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
         </svg>
       </button>
       {paymentMethod == "deposit" && (
-        <div className=" top-full  text-text">{t("payWithDebos")}</div>
+        <div className=" top-full text-text">{t("payWithDeposit")}</div>
       )}
       {/* Show error if no color is selected */}
 

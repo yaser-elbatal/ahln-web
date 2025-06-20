@@ -264,7 +264,6 @@ const translations: Record<Language, Record<string, string>> = {
     cardPayment: "💳 Credit/Debit Card",
     SelectPaymentMethod: "Select Payment Method",
     payWithTabby: "Pay with tabby",
-
     payWithDeposit:
       "Place your order now, pay the rest later after installation",
     subscriptionSuccess: "Subscribed Successfully",
@@ -272,8 +271,8 @@ const translations: Record<Language, Record<string, string>> = {
     contactFormSuccess: "Message Sent Successfully",
     contactFormError: "Message Failed to Send",
     outOfStock: "Out of Stock",
-    payWithDebos: "Place your order now, pay the rest later after installation",
     differYesterdayToday: "The difference between yesterday and today",
+    soon: "(soon!)",
   },
   ar: {
     home: "الرئيسية",
@@ -357,7 +356,7 @@ const translations: Record<Language, Record<string, string>> = {
       "تتبع جميع شحناتك في مكان واحد باستخدام تطبيقنا المحمول . احصل على إشعارات فورية وقم بإدارة تفضيلات التسليم بسهولة.",
     controlFeature1: "  إشعارات فورية ",
     controlFeature2: "إدارة عدة عمليات تسليم دفعة واحدة",
-    controlFeature3: "شارك الوصول مع أفراد العائلة",
+    controlFeature3: "حساب عائلي مشترك للتطبيق",
     secureSectionDesc:
       "تضمن صناديق التوصيل الذكية لدينا بقاء طلباتك آمنة حتى تكون جاهزاً لاستلامها.",
     secureFeature1: "تصميم مقاوم للعبث بميزات أمان متقدمة",
@@ -379,7 +378,7 @@ const translations: Record<Language, Record<string, string>> = {
       "سجّل رقم التتبع الخاص بطلبك ليفتح الباب تلقائياً عند مسح المندوب لرقم التتبع.",
     processStep4Title: "رمز سري",
     processStep4Desc: "اضبط رمزاً متكرراً للمناديب وتلقى إشعاراً عند كل تسليم.",
-    latestHappeningsDesc: "ابقي َ علي اطﻼع بحضورنا في أبرز اﻷحداث والمعارض",
+    latestHappeningsDesc: "ابرز المشاركات والإنجازات المحلية والدولية",
     watchVideo: "مشاهدة الفيديو →",
     marketingConsent:
       "أوافق على تلقي الاتصالات التسويقية وأوافق على سياسة الخصوصية الخاصة بـ Ahln. ",
@@ -520,14 +519,14 @@ const translations: Record<Language, Record<string, string>> = {
     cardPayment: "💳 بطاقة ائتمان / خصم",
     SelectPaymentMethod: "اختر طريقة الدفع",
     payWithTabby: "ادفع مع تابي",
-    payWithDebos: "اطلب الحين والباقي بعد التركيب",
-    differYesterdayToday: "الفرق بين اﻷمس واليوم",
     payWithDeposit: "اطلب الحين والباقي بعد التركيب",
     subscriptionSuccess: "تمت عملية الاشتراك بنجاح",
     subscriptionError: "حدث خطأ أثناء عملية الاشتراك",
     contactFormSuccess: "تم الإرسال بنجاح",
     contactFormError: "حدث خطأ أثناء إرسال رسالتك",
     outOfStock: "غير متوفر",
+    differYesterdayToday: "الفرق بين اﻷمس واليوم",
+    soon: "(قريباً !)",
   },
 };
 

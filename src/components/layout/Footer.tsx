@@ -2,9 +2,9 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import Link from "next/link";
-import React, { useState, FormEvent } from "react";
 import axios from "@/lib/axiosConfig";
+import Link from "next/link";
+import { FormEvent, useState } from "react";
 // Import icons (using placeholders for now, consider using @mui/icons-material or react-icons)
 // Example: import LocationOnIcon from '@mui/icons-material/LocationOn';
 // Example: import PhoneIcon from '@mui/icons-material/Phone';
@@ -25,7 +25,7 @@ const IconPlaceholder = ({
 }) => <span className={`inline-block text-gray-400 ${className}`}>{name}</span>;
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
@@ -142,7 +142,7 @@ export default function Footer() {
               <li className="flex items-center">
                 <img src="/icons/call.svg" alt="call" width={20} height={20} />
                 <a href="tel: +971 52 288 0118" className="text-text ml-2">
-                  +971 52 288 0118
+                  {lang === "en" ? "+971 52 288 0118" : "   522880118 (971+)"}
                 </a>
               </li>
               <li className="flex items-center">

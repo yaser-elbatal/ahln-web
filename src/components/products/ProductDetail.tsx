@@ -244,8 +244,19 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                       </p>
                     </div>
 
-                    <h2 className="text-xl md:text-xl font-semibold text-text">
-                      {t("comesWith")}
+                    <h2 className="text-xl md:text-xl font-semibold border-b border-gray-300 pb-2">
+                      <a
+                        href="/AhlnMax-installation.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-secondary"
+                      >
+                        View Installation Specifications →
+                      </a>
+                    </h2>
+
+                    <h2 className="text-xl md:text-xl font-semibold mt-6 ">
+                      Comes with :
                     </h2>
                     <div className="flex flex-wrap gap-3">
                       {productInfo?.comes?.map((tag, index) => (

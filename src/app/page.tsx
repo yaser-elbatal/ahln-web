@@ -527,6 +527,14 @@ export default function Home() {
                         </svg>
                       </div>
                       <span className="text-text text-lg">{feature}</span>
+                      {
+                        // If the feature is not available yet, show a "soon" message
+                        feature === t("processFeature2") && (
+                          <span className="text-red-400 text-lg">
+                            {t("soon")}
+                          </span>
+                        )
+                      }
                     </motion.li>
                   ))}
                 </ul>
