@@ -10,7 +10,7 @@ export default function RotatingBox({ imageSrc }: Props) {
       <AnimatePresence mode="wait">
         <motion.img
           key={imageSrc}
-          src={imageSrc ? imageSrc : "/images/powerful-app.png"}
+          src={imageSrc}
           alt="Rotating Icon"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
