@@ -60,6 +60,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
     const findProduct = products.find(
       (product) => product.id == parseInt(slug)
     );
+    console.log(findProduct);
     setProductInfo(findProduct || null);
     setIsLoading(false);
     if (!findProduct) {
@@ -243,7 +244,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                       </p>
                     </div>
 
-                    <h2 className="text-xl md:text-xl font-semibold">
+                    <h2 className="text-xl md:text-xl font-semibold text-text">
                       {t("comesWith")}
                     </h2>
                     <div className="flex flex-wrap gap-3">
@@ -263,9 +264,9 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                     {/* Color Selection */}
                     <div className="rounded-lg mb-4 ">
                       <div
-                        className={`w-full flex justify-between items-center p-4 text-text border-b ${PAGE_COLORS.borderLight} `}
+                        className={`w-full flex justify-between items-center p-4 border-b ${PAGE_COLORS.borderLight} `}
                       >
-                        <h2 className="mt-4 text-xl md:text-xl font-semibold">
+                        <h2 className="mt-4 text-xl md:text-xl font-semibold  text-text">
                           {t("selectColor")}
                         </h2>
                       </div>
@@ -501,7 +502,10 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                     <CheckoutButton
                       selectedItems={[
                         {
-                          price: productInfo?.stripePriceId || "",
+                          price:
+                            (paymentMethod === "deposit"
+                              ? productInfo?.depositPriceId
+                              : productInfo?.stripePriceId) || "",
                           quantity: 1,
                           amount: productInfo?.price || 0,
                         },
@@ -515,7 +519,10 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                         color: selectedColor,
                         paymentMethod, // This is the dynamic value
                       }}
-                      disabled={!selectedColor}
+                      disabled={
+                        !selectedColor || (productInfo?.stock ?? 0) <= 0
+                      }
+                      stock={productInfo?.stock}
                     />
                   </div>
                 </div>

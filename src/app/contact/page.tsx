@@ -2,9 +2,88 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import React, { useState, FormEvent } from "react";
+import axios from "@/lib/axiosConfig";
 
 export default function ContactPage() {
   const { t } = useLanguage();
+  const [email, setEmail] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
+
+  const [contactName, setContactName] = useState<string>("");
+  const [contactEmail, setContactEmail] = useState<string>("");
+  const [contactMessage, setContactMessage] = useState<string>("");
+  const [contactFormMessage, setContactFormMessage] = useState<string>("");
+  const [isContactFormSuccess, setIsContactFormSuccess] =
+    useState<boolean>(false);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setMessage(""); // Clear previous messages
+
+    try {
+      const response = await axios.post("/api/website/create-web-subscribers", {
+        email,
+      });
+
+      if (response.status >= 200 && response.status < 300) {
+        setMessage(t("subscriptionSuccess"));
+        setIsSuccess(true);
+        setEmail(""); // Clear email input on success
+      } else {
+        const errorData = response.data;
+        setMessage(
+          t("subscriptionError") +
+            `: ${errorData.message || response.statusText || response.status}`
+        );
+        setIsSuccess(false);
+      }
+    } catch (error) {
+      console.error("Subscription error:", error);
+      setMessage(
+        t("subscriptionError") +
+          `: ${error instanceof Error ? error.message : String(error)}`
+      );
+      setIsSuccess(false);
+    }
+  };
+
+  const handleContactFormSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setContactFormMessage(""); // Clear previous messages
+
+    try {
+      const response = await axios.post("/api/website/create-contact-form", {
+        name: contactName,
+        email: contactEmail,
+        message: contactMessage,
+      });
+
+      if (response.status >= 200 && response.status < 300) {
+        setContactFormMessage(t("contactFormSuccess"));
+        setIsContactFormSuccess(true);
+        setContactName("");
+        setContactEmail("");
+        setContactMessage("");
+      } else {
+        const errorData = response.data;
+        setContactFormMessage(
+          t("contactFormError") +
+            `: ${errorData.message || response.statusText || response.status}`
+        );
+        setIsContactFormSuccess(false);
+      }
+    } catch (error) {
+      console.error("Contact form submission error:", error);
+      setContactFormMessage(
+        t("contactFormError") +
+          `: ${error instanceof Error ? error.message : String(error)}`
+      );
+      setIsContactFormSuccess(false);
+    }
+  };
+
   return (
     <main className="min-h-screen bg-background text-text font-sans">
       {/* Hero */}
@@ -35,21 +114,22 @@ export default function ContactPage() {
           transition={{ duration: 0.6 }}
           className="space-y-2"
         >
-          <h2 className="text-2xl font-semibold">
-            {t("contactInformation")}
-          </h2>
+          <h2 className="text-2xl font-semibold">{t("contactInformation")}</h2>
           <p className="text-gray-600">{t("reachUs")}</p>
 
           <div>
             <p className="font-medium">📞 {t("phone")}:</p>
-            <a href="tel:+971 4 269 3935" className="hover:text-text ltr:ml-2 rtl:mr-2">
-              +971 4 269 3935
+            <a href="tel: +971 52 288 0118" className="text-text ml-2">
+              +971 52 288 0118
             </a>
           </div>
 
           <div>
             <p className="font-medium">📧 {t("email")}:</p>
-            <a href="mailto:info@ahln.ae" className="hover:text-text ltr:ml-2 rtl:mr-2">
+            <a
+              href="mailto:info@ahln.ae"
+              className="hover:text-text ltr:ml-2 rtl:mr-2"
+            >
               info@ahln.ae
             </a>
           </div>
@@ -102,23 +182,32 @@ export default function ContactPage() {
           <h2 className="text-2xl font-semibold mb-6 text-center">
             {t("sendUsMessage")}
           </h2>
-          <form className="grid grid-cols-1 gap-6">
+          <form
+            className="grid grid-cols-1 gap-6"
+            onSubmit={handleContactFormSubmit}
+          >
             <input
               className=" bg-background-700 border border-secondary px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
               type="text"
               placeholder={t("enterFullName")}
+              value={contactName}
+              onChange={(e) => setContactName(e.target.value)}
               required
             />
             <input
               className=" bg-background-700 border border-secondary px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
               type="email"
               placeholder={t("enterEmail")}
+              value={contactEmail}
+              onChange={(e) => setContactEmail(e.target.value)}
               required
             />
             <textarea
               className=" bg-background-700 border border-secondary px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
               rows={5}
               placeholder={t("yourMessage")}
+              value={contactMessage}
+              onChange={(e) => setContactMessage(e.target.value)}
               required
             ></textarea>
             <button
@@ -128,6 +217,15 @@ export default function ContactPage() {
               {t("sendMessage")}
             </button>
           </form>
+          {contactFormMessage && (
+            <p
+              className={`mt-4 text-center ${
+                isContactFormSuccess ? "text-green-600" : "text-red-500"
+              }`}
+            >
+              {contactFormMessage}
+            </p>
+          )}
         </motion.div>
       </section>
 
@@ -143,15 +241,34 @@ export default function ContactPage() {
         </motion.h3>
         <p className="text-gray-400 mb-6">{t("subscribeForLatest")}</p>
 
-        <div className="flex justify-center items-center">
+        <form
+          className="flex justify-center items-center"
+          onSubmit={handleSubmit}
+        >
           <input
+            type="email"
             className="p-3 px-4 rounded-l-lg  bg-background-700  text-text border border-secondary focus:outline-none focus:ring-2 focus:ring-secondary"
             placeholder={t("enterEmail")}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
-          <button className="p-3 px-6 rounded-r-lg bg-secondary hover:bg-secondary text-white">
+          <button
+            type="submit"
+            className="p-3 px-6 rounded-r-lg bg-secondary hover:bg-secondary text-white"
+          >
             {t("subscribeNow")}
           </button>
-        </div>
+        </form>
+        {message && (
+          <p
+            className={`mt-2 text-sm text-center ${
+              isSuccess ? "text-green-600" : "text-red-500"
+            }`}
+          >
+            {message}
+          </p>
+        )}
 
         <div className="mt-6 flex justify-center space-x-6">
           <a href="#">

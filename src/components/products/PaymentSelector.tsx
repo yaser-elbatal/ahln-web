@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 
 export const paymentOptions = [
   { value: "card", label: "cardPayment" },
-  { value: "tamara", label: "tamaraPayment" },
+  // { value: "tamara", label: "tamaraPayment" },
   { value: "deposit", label: "depositPayment" },
 ];
 
@@ -19,7 +19,7 @@ const PaymentSelector: React.FC<Props> = ({ selected, onChange }) => {
 
   return (
     <div className="relative w-full mt-6">
-      <label className="text-xl md:text-xl font-semibold">
+      <label className="text-xl md:text-xl font-semibold text-text">
         {t("SelectPaymentMethod")}
       </label>
       <div className="relative mt-5">

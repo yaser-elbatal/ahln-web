@@ -15,12 +15,14 @@ type CheckoutButtonProps = {
   metadata?: {
     [key: string]: string | number | object | [] | null;
   };
+  stock?: number;
 };
 
 const CheckoutButton: React.FC<CheckoutButtonProps> = ({
   selectedItems,
   disabled,
   metadata,
+  stock = 0,
 }) => {
   const [loading, setLoading] = useState(false);
   const { t } = useLanguage();
@@ -102,13 +104,13 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
         </svg>
       </button>
       {paymentMethod == "deposit" && (
-        <div className=" top-full  text-gray-1000">{t("payWithDebos")}</div>
+        <div className=" top-full  text-text">{t("payWithDebos")}</div>
       )}
       {/* Show error if no color is selected */}
 
       {disableButton && (
         <div className="absolute top-full text-sm text-red-500 mb-1.5">
-          {t("PleaseSelectColor")}
+          {stock <= 0 ? t("outOfStock") : t("PleaseSelectColor")}
         </div>
       )}
     </div>

@@ -10,6 +10,8 @@ type BaseProduct = Omit<
   comesKeys?: string[];
   specifications: { labelKey: string; value: string }[];
   payments: string[];
+  depositPriceId: string;
+  stock: number;
 };
 
 const baseProducts: BaseProduct[] = [
@@ -18,6 +20,7 @@ const baseProducts: BaseProduct[] = [
     nameKey: "productMaxName",
     model: "max",
     status: true,
+    stock: 10,
     price: 8900,
     image: "/images/max.png",
     bannerImage: "/images/ahln-max.jpg",
@@ -26,7 +29,7 @@ const baseProducts: BaseProduct[] = [
       process.env.NODE_ENV === "development"
         ? "price_1RMk8UDHoZtoEuq1FtGXdTmr"
         : "price_1RQTgw04jNAuzfPHErEV1A9S",
-
+    depositPriceId: "price_1RZrht04jNAuzfPH1voWpMH7",
     descriptionKey: "productMaxDescription",
     comesKeys: [
       "tagFreeDeliveryInstallation",
@@ -43,7 +46,10 @@ const baseProducts: BaseProduct[] = [
     ],
 
     specifications: [
-      { labelKey: "specMaterial", value: "Stainless steel" },
+      {
+        labelKey: "specMaterial",
+        value: "Galvanized Steel with Double Powder Coated Paint (IP65)",
+      },
       { labelKey: "specWeight", value: "163 Kg" },
       { labelKey: "specOperatingVoltage", value: "220 Volts (AC)" },
       { labelKey: "specPowerConsumption", value: "75 Watts" },
@@ -52,7 +58,7 @@ const baseProducts: BaseProduct[] = [
         value: "Wall Mount, Floor Standing and Wall Insert",
       },
       { labelKey: "specOperatingSystem", value: "Android" },
-      { labelKey: "specTouchscreenSize", value: "7.2 Inch" },
+      { labelKey: "specTouchscreenSize", value: "7.0 Inch" },
       { labelKey: "specCapacity", value: "173,246,440 litres" },
       { labelKey: "specDimensions", value: "100 x 65 x 190 cm" },
       { labelKey: "specNetwork", value: "Communication Ethernet & WiFi" },
@@ -71,7 +77,7 @@ const baseProducts: BaseProduct[] = [
       pebblegrey: "/images/pebblegrey.png",
       bluegrey: "/images/bluegrey.png",
     },
-    payments: ["depositPayment", "tamaraPayment", "cardPayment"],
+    payments: ["depositPayment", "cardPayment"],
 
     colorImages: [
       {
@@ -99,11 +105,13 @@ const baseProducts: BaseProduct[] = [
     nameKey: "productMiniName",
     model: "mini",
     status: false,
+    stock: 0,
     price: 5900,
     image: "/images/mini.png",
     bannerImage: "/images/ahln-mini.jpg",
     bannerImageMobile: "/images/mini-mobilebanner.jpg",
     stripePriceId: "price_1RMk8UDHoZtoEuq1FtGXdTmr",
+    depositPriceId: "price_1RZrht04jNAuzfPH1voWpMH7",
     descriptionKey: "productMiniDescription",
     tagKeys: [
       "tagCompact",
@@ -125,12 +133,12 @@ const baseProducts: BaseProduct[] = [
         value: "Wall Mount, Floor Standing and Wall Insert",
       },
       { labelKey: "specOperatingSystem", value: "Android" },
-      { labelKey: "specTouchscreenSize", value: "7.2 Inch" },
+      { labelKey: "specTouchscreenSize", value: "7.0 Inch" },
       { labelKey: "specCapacity", value: "173,246,440 litres" },
       { labelKey: "specDimensions", value: "100 x 65 x 190 cm" },
       { labelKey: "specNetwork", value: "Communication Ethernet & WiFi" },
     ],
-    payments: ["depositPayment", "tamaraPayment", "cardPayment"],
+    payments: ["depositPayment", "cardPayment"],
 
     accessories: [],
     carouselImages: [

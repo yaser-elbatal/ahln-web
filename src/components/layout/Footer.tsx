@@ -3,6 +3,8 @@
 
 import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
+import React, { useState, FormEvent } from "react";
+import axios from "@/lib/axiosConfig";
 // Import icons (using placeholders for now, consider using @mui/icons-material or react-icons)
 // Example: import LocationOnIcon from '@mui/icons-material/LocationOn';
 // Example: import PhoneIcon from '@mui/icons-material/Phone';
@@ -25,6 +27,40 @@ const IconPlaceholder = ({
 export default function Footer() {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setMessage(""); // Clear previous messages
+
+    try {
+      const response = await axios.post("/api/website/create-web-subscribers", {
+        email,
+      });
+
+      if (response.status >= 200 && response.status < 300) {
+        setMessage(t("subscriptionSuccess"));
+        setIsSuccess(true);
+        setEmail(""); // Clear email input on success
+      } else {
+        const errorData = response.data;
+        setMessage(
+          t("subscriptionError") +
+            `: ${errorData.message || response.statusText || response.status}`
+        );
+        setIsSuccess(false);
+      }
+    } catch (error) {
+      console.error("Subscription error:", error);
+      setMessage(
+        t("subscriptionError") +
+          `: ${error instanceof Error ? error.message : String(error)}`
+      );
+      setIsSuccess(false);
+    }
+  };
 
   return (
     // Remove relative/overflow, adjust top padding (e.g., pt-16 or pt-12)
@@ -105,11 +141,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <img src="/icons/call.svg" alt="call" width={20} height={20} />
-                <a
-                  href="tel:+971 4 269 3935"
-                  className="text-text ltr:ml-2 rtl:mr-2"
-                >
-                  +971 4 269 3935
+                <a href="tel: +971 52 288 0118" className="text-text ml-2">
+                  +971 52 288 0118
                 </a>
               </li>
               <li className="flex items-center">
@@ -135,12 +168,15 @@ export default function Footer() {
               {t("stayUpdated")}
             </h5>
             <p className="text-sm text-text mb-4">{t("subscribeDesc")}</p>
-            <form className="flex">
+            <form className="flex" onSubmit={handleSubmit}>
               <input
                 type="email"
                 placeholder={t("emailPlaceholder")}
                 className="flex-grow px-3 py-2 bg-background-700 border border-gray-600 rounded-l-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-text placeholder-gray-500 text-sm"
                 aria-label="Email for newsletter"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
               <button
                 type="submit"
@@ -151,6 +187,15 @@ export default function Footer() {
                 {/* Replace with Send icon */}
               </button>
             </form>
+            {message && (
+              <p
+                className={`mt-2 text-sm ${
+                  isSuccess ? "text-green-600" : "text-red-500"
+                }`}
+              >
+                {message}
+              </p>
+            )}
           </div>
         </div>
 

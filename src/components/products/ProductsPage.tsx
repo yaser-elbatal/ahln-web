@@ -37,6 +37,7 @@ export type Product = {
   price: number;
   stripePriceId: string;
   status: boolean;
+  stock: number;
   image: string;
   description: string;
   tags: string[];
@@ -56,6 +57,7 @@ export type Product = {
   }[];
   comes?: string[];
   payments: string[];
+  depositPriceId?: string;
 };
 
 // Product Card Component

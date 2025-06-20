@@ -4,12 +4,12 @@ import { useLanguage } from "@/context/LanguageContext";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, type SwiperClass } from "swiper/react";
 
 const events = [
   {
@@ -74,6 +74,25 @@ export default function LatestHappenings() {
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
+  const [innerIndexes, setInnerIndexes] = useState<{
+    [eventId: number]: number;
+  }>({});
+  const mainSwiperRef = useRef<SwiperClass | null>(null);
+
+  const handleInnerSlideChange = (swiper: SwiperClass, eventId: number) => {
+    const isLastSlide = swiper.activeIndex === swiper.slides.length - 1;
+    setInnerIndexes((prev) => ({ ...prev, [eventId]: swiper.activeIndex }));
+
+    // Enable main swiper only if current event's inner swiper reached last slide
+    if (mainSwiperRef.current && isLastSlide) {
+      mainSwiperRef.current.allowSlideNext = true;
+      mainSwiperRef.current.allowSlidePrev = true;
+    } else if (mainSwiperRef.current) {
+      mainSwiperRef.current.allowSlideNext = false;
+      mainSwiperRef.current.allowSlidePrev = false;
+    }
+  };
+
   if (!hydrated) return null;
 
   return (
@@ -106,7 +125,7 @@ export default function LatestHappenings() {
 
         <div className="w-full max-w-[1400px] overflow-hidden flex justify-center">
           <Swiper
-            key={isRTL.toString()} // force re-render on direction change
+            key={isRTL.toString()}
             modules={[Pagination, Navigation, Autoplay]}
             autoplay={{ delay: 10000, disableOnInteraction: false }}
             pagination={{
@@ -119,9 +138,14 @@ export default function LatestHappenings() {
             }}
             centeredSlides
             spaceBetween={20}
-            loop
+            loop={false} // Must not loop or user will bypass restriction
             slidesPerView={1}
             dir={isRTL ? "rtl" : "ltr"}
+            onSwiper={(swiper) => {
+              mainSwiperRef.current = swiper;
+              swiper.allowSlideNext = false; // Initially locked
+              swiper.allowSlidePrev = false;
+            }}
           >
             {events.map((event) => (
               <SwiperSlide key={event.id}>
@@ -134,12 +158,15 @@ export default function LatestHappenings() {
                   >
                     <div className="relative w-full bg-black rounded-t-xl overflow-hidden aspect-[16/9]">
                       <Swiper
-                        key={`${event.id}-images-${isRTL}`} // rerender inner Swiper
+                        key={`${event.id}-images-${isRTL}`}
                         modules={[Pagination, Autoplay]}
                         pagination={{ clickable: true }}
                         autoplay={{ delay: 3000, disableOnInteraction: false }}
                         spaceBetween={10}
                         slidesPerView={1}
+                        onSlideChange={(swiper) =>
+                          handleInnerSlideChange(swiper, event.id)
+                        }
                         className="h-full w-full"
                       >
                         {event.images.map((src, index) => (
