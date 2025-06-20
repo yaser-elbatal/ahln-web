@@ -158,6 +158,7 @@ export default function LatestHappenings() {
                   >
                     <div className="relative w-full bg-black rounded-t-xl overflow-hidden aspect-[16/9]">
                       <Swiper
+                        initialSlide={innerIndexes[event.id] || 0}
                         key={`${event.id}-images-${isRTL}`}
                         modules={[Pagination, Autoplay]}
                         pagination={{ clickable: true }}

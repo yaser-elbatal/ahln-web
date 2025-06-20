@@ -1,4 +1,6 @@
-import React from "react";
+{
+  /* eslint-disable react/no-unescaped-entities */
+}
 
 const PrivacyPolicyPage = () => {
   return (
@@ -9,10 +11,10 @@ const PrivacyPolicyPage = () => {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
           <p className="text-gray-700 leading-relaxed">
-            This policy explains how Ahln ("we," "us") collects, uses, stores,
-            and processes your personal information. Applicable to all users of
-            our website, app, and hardware services in compliance with UAE data
-            protection laws.
+            This policy explains how Ahln (&quot;we,&quot; &quot;us&quot;)
+            collects, uses, stores, and processes your personal information.
+            Applicable to all users of our website, app, and hardware services
+            in compliance with UAE data protection laws.
           </p>
         </section>
 

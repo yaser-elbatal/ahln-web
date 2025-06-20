@@ -1,4 +1,6 @@
-import React from "react";
+{
+  /* eslint-disable react/no-unescaped-entities */
+}
 
 export default function TermsOfServicePage() {
   return (
@@ -14,10 +16,10 @@ export default function TermsOfServicePage() {
           </h2>
           <p className="text-gray-700 leading-relaxed">
             By accessing or using the Ahln. website, mobile app, or Ahln Smart
-            Delivery Box ("Services"), you ("User") agree to be bound by these
-            Terms & Conditions. If you are accessing or using the Services on
-            behalf of a company or organization, you represent that you have the
-            authority to bind them to these Terms.
+            Delivery Box (&quot;Services&quot;), you (&quot;User&quot;) agree to
+            be bound by these Terms &amp; Conditions. If you are accessing or
+            using the Services on behalf of a company or organization, you
+            represent that you have the authority to bind them to these Terms.
           </p>
         </section>
 

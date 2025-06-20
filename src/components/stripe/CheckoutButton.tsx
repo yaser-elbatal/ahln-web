@@ -52,7 +52,7 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
     const stripe = await getStripe();
     await stripe?.redirectToCheckout({ sessionId });
   };
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const disableButton = loading || selectedItems.length === 0 || disabled;
 
   const totalAmount = selectedItems.reduce(

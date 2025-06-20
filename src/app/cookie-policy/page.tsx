@@ -1,4 +1,6 @@
-import React from "react";
+{
+  /* eslint-disable react/no-unescaped-entities */
+}
 
 const CookiePolicyPage = () => {
   return (
@@ -8,10 +10,11 @@ const CookiePolicyPage = () => {
 
         <section className="mb-8">
           <p className="text-gray-700 leading-relaxed">
-            This Cookie Policy explains how Ahln. ("we," "us," "our") uses
-            cookies and similar technologies when you visit our website
-            (ahln.ae), mobile app, or other digital platforms. It is part of our
-            Privacy Policy and should be read alongside it.
+            This Cookie Policy explains how Ahln. (&quot;we,&quot;
+            &quot;us,&quot; &quot;our&quot;) uses cookies and similar
+            technologies when you visit our website (ahln.ae), mobile app, or
+            other digital platforms. It is part of our Privacy Policy and should
+            be read alongside it.
           </p>
         </section>
 
