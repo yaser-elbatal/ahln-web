@@ -141,10 +141,34 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <img src="/icons/call.svg" alt="call" width={20} height={20} />
-                <a href="tel: +971 52 288 0118" className="text-text ml-2">
-                  {lang === "en" ? "+971 52 288 0118" : "   522880118 (971+)"}
+                <a href="tel: +971 52 288 0118" className="text-text ml-2 mr-2">
+                  <span
+                    dir="ltr"
+                    className="text-text text-sm"
+                    style={{ unicodeBidi: "plaintext" }}
+                  >
+                    +971 52 288 0118
+                  </span>
                 </a>
               </li>
+              <li className="flex items-center">
+                <img src="/whatsUp.svg" alt="WhatsApp" width={20} height={20} />
+                <a
+                  href="https://wa.me/971554776244"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-text ml-2 mr-2"
+                >
+                  <span
+                    dir="ltr"
+                    className="text-text text-sm"
+                    style={{ unicodeBidi: "plaintext" }}
+                  >
+                    +971 55 477 6244
+                  </span>
+                </a>
+              </li>
+
               <li className="flex items-center">
                 <img
                   src="/icons/email.svg"

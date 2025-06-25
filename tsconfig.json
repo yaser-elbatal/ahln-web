@@ -17,6 +17,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+
     "plugins": [
       {
         "name": "next"
@@ -34,7 +36,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+    "exclude": ["node_modules", "dist", "build", ".next"]
+
 }

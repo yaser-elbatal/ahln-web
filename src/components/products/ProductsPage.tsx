@@ -62,27 +62,29 @@ export type Product = {
 
 // Product Card Component
 function ProductCard({ product }: { product: Product }) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const cardContent = (
     <div
-      className={`group backdrop-blur-sm rounded-2xl p-6 lg:p-8 transition-all shadow-2xl/15 duration-300 ${
-        COLOR.border
-      } ${product.status ? COLOR.hover : ""} block ${
-        product.status ? "cursor-pointer" : "cursor-not-allowed"
-      }`}
+      className={`group backdrop-blur-sm rounded-2xl p-6 lg:p-8 transition-all shadow-2xl/15 duration-300 ${COLOR.border
+        } ${product.status ? COLOR.hover : ""} block ${product.status ? "cursor-pointer" : "cursor-not-allowed"
+        }`}
     >
       <div className="relative mb-6 overflow-hidden">
         <Image
-          src={product.image}
+          src={
+            product.image === "/images/mini.png"
+              ? "/images/mini.png"
+              : lang === "en"
+                ? product.image
+                : "/images/max_arabic.png"
+          }
           alt={product.name}
           width={400}
-          height={400}
-          className={`object-contain w-full h-full transform ${
-            product.status ? "group-hover:scale-105" : ""
-          } transition-transform duration-300 ${
-            !product.status ? "opacity-50" : ""
-          }`}
+          height={product.image === "/images/mini.png"?400:800}
+          className={`object-contain w-full h-full transform transition-transform duration-300 
+    ${product.status ? "group-hover:scale-105 rounded-4xl" : "opacity-50"}`}
         />
+
         {!product.status && (
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="text-2xl font-bold text-white bg-black/50 px-4 py-2 rounded-lg">
@@ -99,10 +101,10 @@ function ProductCard({ product }: { product: Product }) {
               tag === "depositPayment"
                 ? "bg-yellow-100 text-yellow-800"
                 : tag === "tamaraPayment"
-                ? "bg-purple-100 text-purple-800"
-                : tag === "cardPayment"
-                ? "bg-green-100 text-green-800"
-                : `${COLOR.tag}`;
+                  ? "bg-purple-100 text-purple-800"
+                  : tag === "cardPayment"
+                    ? "bg-green-100 text-green-800"
+                    : `${COLOR.tag}`;
 
             return (
               <span

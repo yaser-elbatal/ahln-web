@@ -87,7 +87,7 @@ export default function TermsOfServicePage() {
           </h2>
           <p className="text-gray-700 leading-relaxed">
             All rights to Ahln content, trademarks, and software are owned by
-            Ahln. or its licensors. No rights are granted beyond what's
+            Ahln. or its licensors. No rights are granted beyond what&apos;s
             necessary for your use of the Services. Reproduction or misuse is
             prohibited without express written permission.
           </p>

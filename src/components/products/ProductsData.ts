@@ -29,7 +29,7 @@ const baseProducts: BaseProduct[] = [
       process.env.NODE_ENV === "development"
         ? "price_1RMk8UDHoZtoEuq1FtGXdTmr"
         : "price_1RQTgw04jNAuzfPHErEV1A9S",
-    depositPriceId: "price_1RZrht04jNAuzfPH1voWpMH7",
+    depositPriceId: "price_1Rc0Y204jNAuzfPHvrb9HaaJ",
     descriptionKey: "productMaxDescription",
     comesKeys: [
       "tagFreeDeliveryInstallation",

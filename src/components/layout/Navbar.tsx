@@ -12,7 +12,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showBrochureOptions, setShowBrochureOptions] = useState(false);
 
-  const { t, toggleLang, lang } = useLanguage();
+  const { t, lang, toggleLang } = useLanguage();
 
   // Prevent background scroll when mobile menu is open
   useEffect(() => {

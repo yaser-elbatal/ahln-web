@@ -169,8 +169,8 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                           isHoveringThumbnail
                             ? carouselImages[currentImageIndex]
                             : selectedColor && colorBanners[selectedColor]
-                            ? colorBanners[selectedColor]
-                            : carouselImages[currentImageIndex]
+                              ? colorBanners[selectedColor]
+                              : carouselImages[currentImageIndex]
                         }
                         alt={`Ahln. Max View ${currentImageIndex + 1}`}
                         fill
@@ -196,11 +196,10 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                             }}
                             onMouseLeave={() => setIsHoveringThumbnail(false)}
                             onClick={() => handleImageHover(index)}
-                            className={`relative w-12 md:w-16 h-12 md:h-16 rounded-xl overflow-hidden border-2 transition-all ${
-                              currentImageIndex === index
+                            className={`relative w-12 md:w-16 h-12 md:h-16 rounded-xl overflow-hidden border-2 transition-all ${currentImageIndex === index
                                 ? "border-primary"
                                 : "border-transparent"
-                            }`}
+                              }`}
                           >
                             <Image
                               src={img}
@@ -251,12 +250,12 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                         rel="noopener noreferrer"
                         className="block text-secondary"
                       >
-                        View Installation Specifications →
+                        {t("ViewInstallation")}
                       </a>
                     </h2>
 
                     <h2 className="text-xl md:text-xl font-semibold mt-6 ">
-                      Comes with :
+                      {t("comesWith")}
                     </h2>
                     <div className="flex flex-wrap gap-3">
                       {productInfo?.comes?.map((tag, index) => (
@@ -314,11 +313,10 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                             {t("productSpecifications")}
                           </h2>
                           <svg
-                            className={`w-6 h-6 transform transition-transform ${
-                              openSection === "specifications"
+                            className={`w-6 h-6 transform transition-transform ${openSection === "specifications"
                                 ? "rotate-180"
                                 : ""
-                            }`}
+                              }`}
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -383,11 +381,10 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                               {t("accessories")}
                             </h2>
                             <svg
-                              className={`w-6 h-6 transform transition-transform ${
-                                openSection === "accessories"
+                              className={`w-6 h-6 transform transition-transform ${openSection === "accessories"
                                   ? "rotate-180"
                                   : ""
-                              }`}
+                                }`}
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
@@ -417,14 +414,13 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                                         (accessory) => (
                                           <div
                                             key={accessory.id}
-                                            className={`transition-transform duration-500 hover:scale-103 z-10 flex border rounded-2xl p-6 md:p-8 min-h-[140px] transition-all duration-300 cursor-pointer overflow-hidden ${
-                                              selectedAccessories.some(
-                                                (item) =>
-                                                  item.id === accessory.id
-                                              )
+                                            className={`transition-transform duration-500 hover:scale-103 z-10 flex border rounded-2xl p-6 md:p-8 min-h-[140px] transition-all duration-300 cursor-pointer overflow-hidden ${selectedAccessories.some(
+                                              (item) =>
+                                                item.id === accessory.id
+                                            )
                                                 ? "border-primary bg-[#eff7fb]"
                                                 : "shadow-sm "
-                                            }`}
+                                              }`}
                                             onClick={() =>
                                               handleAccessoryToggle(accessory)
                                             }
@@ -463,20 +459,20 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                                                     (item) =>
                                                       item.id === accessory.id
                                                   ) && (
-                                                    <svg
-                                                      className="w-4 h-4 text-primary"
-                                                      fill="none"
-                                                      viewBox="0 0 24 24"
-                                                      stroke="currentColor"
-                                                    >
-                                                      <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        strokeWidth={3}
-                                                        d="M5 13l4 4L19 7"
-                                                      />
-                                                    </svg>
-                                                  )}
+                                                      <svg
+                                                        className="w-4 h-4 text-primary"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        stroke="currentColor"
+                                                      >
+                                                        <path
+                                                          strokeLinecap="round"
+                                                          strokeLinejoin="round"
+                                                          strokeWidth={3}
+                                                          d="M5 13l4 4L19 7"
+                                                        />
+                                                      </svg>
+                                                    )}
                                                 </div>
                                                 <div
                                                   className={`w-10 h-10 rounded-md flex items-center justify-center transition-colors  `}

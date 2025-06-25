@@ -27,7 +27,7 @@ export default function VideoComparison({
           id="before-video"
           videoSrc={beforeVideoSrc}
           posterSrc="/images/beforeAhln.jpg"
-          title={t("Life")}
+          // title={t("Life")}
           highlight={t("before")}
         />
       </motion.div>
@@ -43,7 +43,7 @@ export default function VideoComparison({
           id="after-video"
           videoSrc={afterVideoSrc}
           posterSrc="/images/afterAhln.jpg"
-          title={t("Life")}
+          // title={t("Life")}
           highlight={t("with")}
         />
       </motion.div>
