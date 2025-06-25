@@ -25,7 +25,7 @@ const IconPlaceholder = ({
 }) => <span className={`inline-block text-gray-400 ${className}`}>{name}</span>;
 
 export default function Footer() {
-  const { t, lang } = useLanguage();
+  const { t,  } = useLanguage();
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");

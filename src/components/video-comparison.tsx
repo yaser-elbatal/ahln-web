@@ -24,6 +24,7 @@ export default function VideoComparison({
         viewport={{ once: false, amount: 0.3 }}
       >
         <VideoCard
+         title=""
           id="before-video"
           videoSrc={beforeVideoSrc}
           posterSrc="/images/beforeAhln.jpg"
@@ -40,6 +41,7 @@ export default function VideoComparison({
         viewport={{ once: false, amount: 0.3 }}
       >
         <VideoCard
+        title=""
           id="after-video"
           videoSrc={afterVideoSrc}
           posterSrc="/images/afterAhln.jpg"
