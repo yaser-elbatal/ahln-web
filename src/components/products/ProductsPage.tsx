@@ -65,76 +65,83 @@ function ProductCard({ product }: { product: Product }) {
   const { t, lang } = useLanguage();
   const cardContent = (
     <div
-      className={`group backdrop-blur-sm rounded-2xl p-6 lg:p-8 transition-all shadow-2xl/15 duration-300 ${COLOR.border
-        } ${product.status ? COLOR.hover : ""} block ${product.status ? "cursor-pointer" : "cursor-not-allowed"
-        }`}
-    >
-      <div className="relative mb-6 overflow-hidden">
-        <Image
-          src={
-            product.image === "/images/mini.png"
-              ? "/images/mini.png"
-              : lang === "en"
-                ? product.image
-                : "/images/max_arabic.png"
-          }
-          alt={product.name}
+  className={`group backdrop-blur-sm rounded-2xl p-6 lg:p-8 transition-all shadow-2xl/15 duration-300 
+    ${COLOR.border} 
+    ${product.status ? COLOR.hover : ""} 
+    block ${product.status ? "cursor-pointer" : "cursor-not-allowed"} 
+    h-full`}
+>
+  <div className="relative flex flex-col h-full">
+    {/* Image Container */}
+    <div className="relative flex-1 mb-6 overflow-hidden rounded-2xl bg-white">
+      <Image
+        src={
+          product.image === "/images/mini.png"
+            ? "/images/mini.png"
+            : lang === "en"
+              ? product.image
+              : "/images/max_arabic.png"
+        }
+        alt={product.name}
           width={400}
-          height={product.image === "/images/mini.png"?400:800}
-          className={`object-contain w-full h-full transform transition-transform duration-300 
-    ${product.status ? "group-hover:scale-105 rounded-4xl" : "opacity-50"}`}
-        />
+          height={400}
+        className={`object-cover w-full h-full transition-transform duration-300  rounded-2xl
+          ${product.status ? "group-hover:scale-105 " : "opacity-50"}`}
+      />
 
-        {!product.status && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-2xl font-bold text-white bg-black/50 px-4 py-2 rounded-lg">
-              {t("comingSoon")}
-            </span>
-          </div>
-        )}
-
-        {/* Payment Tags */}
-        {/* Payment Tags inside image with responsive spacing */}
-        <div className="absolute top-2 left-2 right-2 flex flex-wrap gap-2 z-10">
-          {product.payments.map((tag, index) => {
-            const tagColor =
-              tag === "depositPayment"
-                ? "bg-yellow-100 text-yellow-800"
-                : tag === "tamaraPayment"
-                  ? "bg-purple-100 text-purple-800"
-                  : tag === "cardPayment"
-                    ? "bg-green-100 text-green-800"
-                    : `${COLOR.tag}`;
-
-            return (
-              <span
-                key={index}
-                className={`px-2.5 py-1 rounded-full text-xs sm:text-sm font-medium ${tagColor}`}
-              >
-                {t(tag)}
-              </span>
-            );
-          })}
+      {/* Coming Soon Overlay */}
+      {!product.status && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-2xl font-bold text-white bg-black/50 px-4 py-2 rounded-lg">
+            {t("comingSoon")}
+          </span>
         </div>
+      )}
 
-        <p className={`mb-6 text-lg ${COLOR.text.secondary}`}>
-          {t(product.description)}
-        </p>
-        <div className="flex flex-wrap gap-3">
-          {product.tags.map((tag, index) => (
+      {/* Payment Tags */}
+      <div className="absolute top-2 left-2 right-2 flex flex-wrap gap-2 z-10">
+        {product.payments.map((tag, index) => {
+          const tagColor =
+            tag === "depositPayment"
+              ? "bg-yellow-100 text-yellow-800"
+              : tag === "tamaraPayment"
+              ? "bg-purple-100 text-purple-800"
+              : tag === "cardPayment"
+              ? "bg-green-100 text-green-800"
+              : `${COLOR.tag}`;
+
+          return (
             <span
               key={index}
-              className={`px-3 py-1 rounded-full text-sm ${COLOR.tag} `}
-              style={{
-                color: COLORS.PRIMARY,
-              }}
+              className={`px-2.5 py-1 rounded-full text-xs sm:text-sm font-medium ${tagColor}`}
             >
               {t(tag)}
             </span>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </div>
+
+    {/* Description */}
+    <p className={`mb-4 text-lg ${COLOR.text.secondary}`}>
+      {t(product.description)}
+    </p>
+
+    {/* Tags */}
+    <div className="flex flex-wrap gap-3 mt-auto">
+      {product.tags.map((tag, index) => (
+        <span
+          key={index}
+          className={`px-3 py-1 rounded-full text-sm ${COLOR.tag}`}
+          style={{ color: COLORS.PRIMARY }}
+        >
+          {t(tag)}
+        </span>
+      ))}
+    </div>
+  </div>
+</div>
+
   );
 
   return product.status ? (
