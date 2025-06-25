@@ -85,7 +85,7 @@ function ProductCard({ product }: { product: Product }) {
         alt={product.name}
           width={400}
           height={400}
-        className={`object-cover w-full h-full transition-transform duration-300  rounded-2xl
+        className={`object-cover w-full h-full transition-transform duration-300  rounded-4xl
           ${product.status ? "group-hover:scale-105 " : "opacity-50"}`}
       />
 
