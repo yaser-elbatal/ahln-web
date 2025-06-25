@@ -17,8 +17,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "typescript.tsserver.experimental.enableProjectDiagnostics": false,
-
+    
     "plugins": [
       {
         "name": "next"
