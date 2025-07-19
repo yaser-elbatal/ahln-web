@@ -22,7 +22,7 @@ const baseProducts: BaseProduct[] = [
     status: true,
     stock: 10,
     price: 8900,
-    image: "/images/max.png",
+    image: "/images/Max-product.png",
     bannerImage: "/images/ahln-max.jpg",
     bannerImageMobile: "/images/max-mobilebanner.png",
     stripePriceId:
@@ -77,7 +77,7 @@ const baseProducts: BaseProduct[] = [
       pebblegrey: "/images/pebblegrey.png",
       bluegrey: "/images/bluegrey.png",
     },
-    payments: ["depositPayment", "cardPayment"],
+    payments: ["depositPayment", "RefundableDepositPayment"],
 
     colorImages: [
       {
@@ -107,7 +107,7 @@ const baseProducts: BaseProduct[] = [
     status: false,
     stock: 0,
     price: 5900,
-    image: "/images/mini.png",
+    image: "/images/Lite.png",
     bannerImage: "/images/ahln-mini.jpg",
     bannerImageMobile: "/images/mini-mobilebanner.jpg",
     stripePriceId: "price_1RMk8UDHoZtoEuq1FtGXdTmr",

@@ -17,8 +17,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ahln Smart Delivery System",
     description: "Secure and efficient package delivery",
-    images: ["/logo.svg"],
-    url: "https://ahln.ae",
+    images: [
+      "https://ahln-s3.s3.me-central-1.amazonaws.com/public/ahlnLogo.png",
+    ],
+    url: "https://www.ahln.ae",
     type: "website",
   },
 };

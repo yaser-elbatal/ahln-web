@@ -62,86 +62,80 @@ export type Product = {
 
 // Product Card Component
 function ProductCard({ product }: { product: Product }) {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const cardContent = (
     <div
-  className={`group backdrop-blur-sm rounded-2xl p-6 lg:p-8 transition-all shadow-2xl/15 duration-300 
-    ${COLOR.border} 
-    ${product.status ? COLOR.hover : ""} 
-    block ${product.status ? "cursor-pointer" : "cursor-not-allowed"} 
-    h-full`}
->
-  <div className="relative flex flex-col h-full">
-    {/* Image Container */}
-    <div className="relative flex-1 mb-6 overflow-hidden rounded-2xl bg-white">
-      <Image
-        src={
-          product.image === "/images/mini.png"
-            ? "/images/mini.png"
-            : lang === "en"
-              ? product.image
-              : "/images/max_arabic.png"
-        }
-        alt={product.name}
-          width={400}
-          height={400}
-        className={`object-cover w-full h-full transition-transform duration-300  rounded-4xl
-          ${product.status ? "group-hover:scale-105 " : "opacity-50"}`}
-      />
-
-      {/* Coming Soon Overlay */}
-      {!product.status && (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-2xl font-bold text-white bg-black/50 px-4 py-2 rounded-lg">
-            {t("comingSoon")}
-          </span>
+      className={`group backdrop-blur-sm rounded-2xl p-6 lg:p-8 transition-all shadow-2xl/15 duration-300 ${
+        COLOR.border
+      } ${product.status ? COLOR.hover : ""} block ${
+        product.status ? "cursor-pointer" : "cursor-not-allowed"
+      }`}
+    >
+      <div className="relative mb-6 overflow-hidden">
+        <div className="overflow-hidden rounded-lg relative">
+          <Image
+            // style={{ width: "400px !important", height: "400px !important", borderRadius: "1rem" }}
+            src={product.image}
+            alt={product.name}
+            width={400}
+            height={400}
+            className={`object-contain w-full h-full transform ${
+              product.status ? "group-hover:scale-105" : ""
+            } transition-transform duration-300 ${
+              !product.status ? "opacity-50" : ""
+            }`}
+          />
         </div>
-      )}
+        {!product.status && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-2xl font-bold text-white bg-black/50 px-4 py-2 rounded-lg">
+              {t("comingSoon")}
+            </span>
+          </div>
+        )}
 
-      {/* Payment Tags */}
-      <div className="absolute top-2 left-2 right-2 flex flex-wrap gap-2 z-10">
-        {product.payments.map((tag, index) => {
-          const tagColor =
-            tag === "depositPayment"
-              ? "bg-yellow-100 text-yellow-800"
-              : tag === "tamaraPayment"
-              ? "bg-purple-100 text-purple-800"
-              : tag === "cardPayment"
-              ? "bg-green-100 text-green-800"
-              : `${COLOR.tag}`;
+        {/* Payment Tags */}
+        {/* Payment Tags inside image with responsive spacing */}
+        <div className="absolute top-4 left-4 right-4 flex flex-wrap gap-2 z-10">
+          {product.payments.map((tag, index) => {
+            const tagColor =
+              tag === "depositPayment"
+                ? "bg-yellow-100 text-yellow-800"
+                : tag === "tamaraPayment"
+                ? "bg-purple-100 text-purple-800"
+                : tag === "cardPayment" || tag === "RefundableDepositPayment"
+                ? "bg-green-100 text-green-800"
+                : `${COLOR.tag}`;
 
-          return (
+            return (
+              <span
+                key={index}
+                className={`px-2.5 py-1 rounded-full text-xs sm:text-sm font-medium ${tagColor}`}
+              >
+                {t(tag)}
+              </span>
+            );
+          })}
+        </div>
+
+        <p className={`mb-6 text-lg ${COLOR.text.secondary}`}>
+          {t(product.description)}
+        </p>
+        <div className="flex flex-wrap gap-3">
+          {product.tags.map((tag, index) => (
             <span
               key={index}
-              className={`px-2.5 py-1 rounded-full text-xs sm:text-sm font-medium ${tagColor}`}
+              className={`px-3 py-1 rounded-full text-sm ${COLOR.tag} `}
+              style={{
+                color: COLORS.PRIMARY,
+              }}
             >
               {t(tag)}
             </span>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </div>
-
-    {/* Description */}
-    <p className={`mb-4 text-lg ${COLOR.text.secondary}`}>
-      {t(product.description)}
-    </p>
-
-    {/* Tags */}
-    <div className="flex flex-wrap gap-3 mt-auto">
-      {product.tags.map((tag, index) => (
-        <span
-          key={index}
-          className={`px-3 py-1 rounded-full text-sm ${COLOR.tag}`}
-          style={{ color: COLORS.PRIMARY }}
-        >
-          {t(tag)}
-        </span>
-      ))}
-    </div>
-  </div>
-</div>
-
   );
 
   return product.status ? (

@@ -16,6 +16,7 @@ const baseFaqs: BaseFaq[] = [
   { questionKey: "faq13Question", answerKey: "faq13Answer" },
   { questionKey: "faq14Question", answerKey: "faq14Answer" },
   { questionKey: "faq15Question", answerKey: "faq15Answer" },
+  { questionKey: "faq16Question", answerKey: "faq16Answer" },
 ];
 
 export function getFaqs(t: (key: string) => string) {

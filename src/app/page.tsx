@@ -243,8 +243,7 @@ export default function Home() {
             viewport={{ once: false, amount: 0.3 }}
             className="text-4xl md:text-5xl font-bold text-text text-center mb-16"
           >
-            <span className="text-primary">{t("AHLN")}</span>
-            <span className="text-text pl-2 pr-2">
+            <span className="text-text">
               {t("differYesterdayToday")}
               {/* {lang == "ar" ? t("beforAndAfter") : t("experiencePrefix")} */}
             </span>{" "}
@@ -403,12 +402,10 @@ export default function Home() {
                 viewport={{ once: false, amount: 0.3 }}
                 className="text-4xl md:text-5xl font-bold text-text mb-6"
               >
-                <span className="text-text">{t("secureStorageTitle")}</span>{" "}
-                {/* {lang == "en" ? (
-                  <span className="text-primary">
-                    {t("secureStorageHighlight")}
-                  </span>
-                ) : null} */}
+                <span className="text-text">{t("secureStoragePrefix")}</span>{" "}
+                <span className="text-primary">
+                  {t("secureStorageHighlight")}
+                </span>
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
@@ -480,11 +477,9 @@ export default function Home() {
                 className="text-4xl md:text-5xl font-bold text-text mb-6"
               >
                 <span className="text-text">{t("seamlessProcessPrefix")}</span>{" "}
-                {/* {lang == "en" ? (
-                  <span className="text-primary">
-                    {t("seamlessProcessHighlight")}
-                  </span>
-                ) : null} */}
+                <span className="text-primary">
+                  {t("seamlessProcessHighlight")}
+                </span>
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
@@ -531,14 +526,15 @@ export default function Home() {
                           />
                         </svg>
                       </div>
-                      <span className="text-text text-lg inline-flex items-center gap-1 flex-wrap">
-                        {feature}
-                        {feature === t("processFeature2") && (
-                          <span className="text-red-400 whitespace-nowrap">
+                      <span className="text-text text-lg">{feature}</span>
+                      {
+                        // If the feature is not available yet, show a "soon" message
+                        feature === t("processFeature2") && (
+                          <span className="text-red-400 text-lg">
                             {t("soon")}
                           </span>
-                        )}
-                      </span>
+                        )
+                      }
                     </motion.li>
                   ))}
                 </ul>

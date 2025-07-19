@@ -34,8 +34,8 @@ export default function MobileSlider({ images }: { images: string[] }) {
         ))}
 
         {/* Navigation elements */}
-        <div className="swiper-button-prev !text-white/80 hover:!text-white after:text-xl"></div>
-        <div className="swiper-button-next !text-white/80 hover:!text-white after:text-xl"></div>
+        <div style={{display:'none'}} className="swiper-button-prev !text-white/80 hover:!text-white after:text-xl"></div>
+        <div style={{display:'none'}} className="swiper-button-next !text-white/80 hover:!text-white after:text-xl"></div>
         <div className="swiper-pagination "></div>
       </Swiper>
     </div>

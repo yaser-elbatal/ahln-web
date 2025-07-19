@@ -87,22 +87,30 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
         disabled={disableButton}
       >
         <span>{loading ? t("Redirecting") : getLabelByPayment()}</span>
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M14 5l7 7m0 0l-7 7m7-7H3"
-          />
-        </svg>
+        {paymentMethod === "deposit" && (
+          <div className="relative group ml-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="#ffff"
+              className="w-5 h-5 cursor-pointer"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.029M12 21a9 9 0 110-18 9 9 0 010 18zm0-10.5a.75.75 0 000 1.5h.008v.008H12z"
+              />
+            </svg>
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-gray-700 text-white text-xs rounded py-1 px-2 whitespace-nowrap">
+              {t("remainingBalance")}
+            </div>
+          </div>
+        )}
       </button>
       {paymentMethod == "deposit" && (
-        <div className=" top-full text-text">{t("payWithDeposit")}</div>
+        <div className=" top-full text-text">{t("payWithDeposit")} <span className="text-gray-500"><br />{t("refundNote")}</span></div>
       )}
       {/* Show error if no color is selected */}
 

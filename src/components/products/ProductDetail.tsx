@@ -45,7 +45,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isLoading, setIsLoading] = useState(true);
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const products = getProducts();
 
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
@@ -226,7 +226,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                       <h1 className="text-3xl md:text-4xl font-bold text-text mb-4">
                         {t(`${productInfo?.name}`)}
                       </h1>
-                      <div className="flex items-center gap-2 mb-6">
+                      <div className="flex items-center gap-2">
                         <Image
                           src="/DirhamSymbol.svg"
                           alt="Dirham"
@@ -234,8 +234,23 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                           height={24}
                           className="inline-block"
                         />
-                        <span className="text-3xl font-bold text-text">
-                          {t(`${productInfo?.price}`)}
+                        <div className="text-3xl font-bold text-text relative">
+                          {t(`${productInfo?.price} `)}
+                        </div>
+                      </div>
+                      <div className="mb-4 relative">
+                        <span className="text-sm font-medium text-black-400 text-text">
+                          {t("prebookText")}
+                          {lang === "en" && (<Image
+                            style={{ position: "absolute", top: "7px" }}
+                            src="/DirhamSymbol.svg"
+                            alt="Dirham"
+                            width={12}
+                            height={12}
+                            className="inline-block"
+                          />)
+                          }
+                          <span className="ml-4">{t("prebookAmount")}</span>
                         </span>
                       </div>
                       <p className="text-text">
@@ -250,11 +265,11 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                         rel="noopener noreferrer"
                         className="block text-secondary"
                       >
-                        {t("ViewInstallation")}
+                        {t('viewInstall')}
                       </a>
                     </h2>
 
-                    <h2 className="text-xl md:text-xl font-semibold mt-6 ">
+                    <h2 className="text-xl md:text-xl font-semibold mt-6 text-gray-600">
                       {t("comesWith")}
                     </h2>
                     <div className="flex flex-wrap gap-3">
@@ -503,6 +518,9 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                     selected={paymentMethod}
                     onChange={setPaymentMethod}
                   />
+                  <p className="text-sm text-gray-700 mt-2">
+                    {t("estimatedDelivery")}
+                  </p>
 
                   {/* Place Order Button */}
                   <div className="mt-6">
