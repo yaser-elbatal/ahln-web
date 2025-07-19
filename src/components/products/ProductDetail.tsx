@@ -197,8 +197,8 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                             onMouseLeave={() => setIsHoveringThumbnail(false)}
                             onClick={() => handleImageHover(index)}
                             className={`relative w-12 md:w-16 h-12 md:h-16 rounded-xl overflow-hidden border-2 transition-all ${currentImageIndex === index
-                                ? "border-primary"
-                                : "border-transparent"
+                              ? "border-primary"
+                              : "border-transparent"
                               }`}
                           >
                             <Image
@@ -314,8 +314,8 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                           </h2>
                           <svg
                             className={`w-6 h-6 transform transition-transform ${openSection === "specifications"
-                                ? "rotate-180"
-                                : ""
+                              ? "rotate-180"
+                              : ""
                               }`}
                             fill="none"
                             viewBox="0 0 24 24"
@@ -382,8 +382,8 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                             </h2>
                             <svg
                               className={`w-6 h-6 transform transition-transform ${openSection === "accessories"
-                                  ? "rotate-180"
-                                  : ""
+                                ? "rotate-180"
+                                : ""
                                 }`}
                               fill="none"
                               viewBox="0 0 24 24"
@@ -418,8 +418,8 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                                               (item) =>
                                                 item.id === accessory.id
                                             )
-                                                ? "border-primary bg-[#eff7fb]"
-                                                : "shadow-sm "
+                                              ? "border-primary bg-[#eff7fb]"
+                                              : "shadow-sm "
                                               }`}
                                             onClick={() =>
                                               handleAccessoryToggle(accessory)
